@@ -11,7 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Remark;
 
 
-public class RemarkCommandParser {
+public class RemarkCommandParser implements Parser<RemarkCommand> {
     public static final String COMMAND_WORD = "remark";
 
     /**
