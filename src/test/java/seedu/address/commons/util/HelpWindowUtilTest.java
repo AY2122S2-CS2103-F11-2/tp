@@ -15,12 +15,26 @@ class HelpWindowUtilTest {
 
     @Test
     public void userGuide_checkLink_throwsIoException() throws IOException {
-        assertEquals(HelpWindowUtil.convertToUrl(validLink), URI.create("https://github.com/AY2122S2-CS2103-F11-2"));
+        HelpWindowUtil helpWindowUtil = new HelpWindowUtil(validLink);
+        assertEquals(helpWindowUtil.convertToUrl(), URI.create("https://github.com/AY2122S2-CS2103-F11-2"));
     }
 
     @Test
     public void userGuide_checkInvalidLink_throwsIoException() throws IOException {
-        assertThrows(IllegalArgumentException.class, () -> HelpWindowUtil.convertToUrl(invalidLink));
+        HelpWindowUtil helpWindowUtil = new HelpWindowUtil(invalidLink);
+        assertThrows(IllegalArgumentException.class, () -> helpWindowUtil.convertToUrl());
     }
 
+    @Test
+    public void userGuide_cannotOpenBrowser_throwsIoException() throws IOException {
+        HelpWindowUtil helpWindowUtil = new HelpWindowUtil(invalidLink);
+        assertThrows(IllegalArgumentException.class, () -> helpWindowUtil.goToUrl());
+    }
+
+    @Test
+    public static void assertHelpWindowUtilSuccess() {
+        HelpWindowUtil helpWindowUtil = new HelpWindowUtil(validLink);
+        Object expectedModel = new HelpWindowUtil("https://github.com/AY2122S2-CS2103-F11-2");
+        assertEquals(helpWindowUtil, expectedModel);
+    }
 }
