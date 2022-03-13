@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.HelpWindowUtil;
 
 /**
  * Controller for a help page
@@ -16,10 +17,11 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-            "https://github.com/AY2122S2-CS2103-F11-2/tp/blob/master/docs/UserGuide.md";
+            "https://ay2122s2-cs2103-f11-2.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE = "Available functions on this version: \n\n"
-            + "-add n/NAME id/STUDENT_ID c/COURSE \n-delete STUDENT_ID\n"
-            + "-find k/KEYWORD [k/MORE_KEYWORDS] f/ATTRIBUTE_FIELD\n"
+            + "-add id/ID n/NAME p/PHONE e/EMAIL c/COURSE [t/TAG]...\n"
+            + "-delete INDEX \n"
+            + "-find k/KEYWORD [k/MORE_KEYWORDS]... f/FIELD\n"
             + "-exit\n\n"
             + "The full guide is available on our User Guide";
 
@@ -100,7 +102,7 @@ public class HelpWindow extends UiPart<Stage> {
      */
     @FXML
     public void goToUrl() throws URISyntaxException, IOException {
-        //Desktop.getDesktop().browse(URI.create(USERGUIDE_URL));
+        HelpWindowUtil.goToUrl(USERGUIDE_URL);
     }
 }
 
