@@ -100,9 +100,10 @@ public class HelpWindow extends UiPart<Stage> {
      * @return
      */
     @FXML
-    public void goToUrl() throws IOException {
+    public HelpWindowUtil goToUrl() throws IOException {
         HelpWindowUtil helpWindowUtil = new HelpWindowUtil(USERGUIDE_URL);
         helpWindowUtil.goToUrl();
+        return helpWindowUtil;
     }
 }
 

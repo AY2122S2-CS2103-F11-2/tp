@@ -39,4 +39,8 @@ public class HelpWindowUtil {
     public URI convertToUrl() {
         return URI.create(this.url);
     }
+
+    public String getUrl() {
+        return url;
+    }
 }

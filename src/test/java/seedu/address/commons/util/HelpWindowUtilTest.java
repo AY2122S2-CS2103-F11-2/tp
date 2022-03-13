@@ -36,5 +36,6 @@ class HelpWindowUtilTest {
         HelpWindowUtil helpWindowUtil = new HelpWindowUtil(validLink);
         Object expectedModel = new HelpWindowUtil("https://github.com/AY2122S2-CS2103-F11-2");
         assertEquals(helpWindowUtil, expectedModel);
+        assertEquals(helpWindowUtil.getUrl(), ((HelpWindowUtil) expectedModel).getUrl());
     }
 }
