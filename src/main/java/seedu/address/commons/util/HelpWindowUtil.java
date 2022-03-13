@@ -6,6 +6,8 @@ import java.net.URI;
 
 public class HelpWindowUtil {
 
+
+
     /**
      * Converts string into URI, and opens in User's default web browser.
      *
@@ -15,12 +17,24 @@ public class HelpWindowUtil {
      */
     public static boolean goToUrl(String url) throws IOException {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        URI newLink = convertToUrl(url);
+
         try {
-            desktop.browse(URI.create(url));
+            desktop.browse(newLink);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    /**
+     * Converts string to the URI class.
+     *
+     * @param url String of the link.
+     * @return URI of the new link.
+     */
+    public static URI convertToUrl(String url) {
+        return URI.create(url);
     }
 }
