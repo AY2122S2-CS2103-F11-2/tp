@@ -143,6 +143,11 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
+
+        private static final String ACCEPTED_APPLICATION = "Accepted";
+        private static final String REJECTED_APPLICATION = "Rejected";
+        private static final String COMPLETED_INTERVIEW = "Completed";
+
         private StudentId studentId;
         private Name name;
         private Phone phone;
@@ -221,6 +226,7 @@ public class EditCommand extends Command {
         }
 
         public void setApplicationStatus(ApplicationStatus applicationStatus) {
+            triggerInterviewStatus(applicationStatus);
             this.applicationStatus = applicationStatus;
         }
 
@@ -285,6 +291,19 @@ public class EditCommand extends Command {
                     && getApplicationStatus().equals(e.getApplicationStatus())
                     && getInterviewStatus().equals(e.getInterviewStatus())
                     && getAvailability().equals(e.getAvailability());
+        }
+
+        /**
+         * This method will trigger the {@code InterviewStatus} to be completed if
+         * {@code ApplicationStatus} is Accepted or Rejected.
+         */
+        public void triggerInterviewStatus(ApplicationStatus applicationStatus) {
+            if (getInterviewStatus().isPresent()) {
+                if (applicationStatus.toString().equals(ACCEPTED_APPLICATION)
+                        || applicationStatus.toString().equals(REJECTED_APPLICATION)) {
+                    this.setInterviewStatus(new InterviewStatus(COMPLETED_INTERVIEW));
+                }
+            }
         }
     }
 }

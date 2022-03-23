@@ -1,9 +1,14 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_REJECTED;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_COMPLETED;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_STATUS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -25,7 +30,9 @@ import seedu.address.model.InterviewSchedule;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.candidate.ApplicationStatus;
 import seedu.address.model.candidate.Candidate;
+import seedu.address.model.candidate.InterviewStatus;
 import seedu.address.testutil.CandidateBuilder;
 import seedu.address.testutil.EditCandidateDescriptorBuilder;
 
@@ -149,6 +156,22 @@ public class EditCommandTest {
                 new EditCandidateDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_triggerByApplicationStatus_success() {
+        EditPersonDescriptor descriptor = new EditCandidateDescriptorBuilder()
+                .withName(VALID_NAME_BOB)
+                .withApplicationStatus(VALID_APPLICATION_STATUS)
+                .withInterviewStatus(VALID_INTERVIEW_STATUS)
+                .build();
+
+        assertEquals(descriptor.getApplicationStatus().get(), new ApplicationStatus(VALID_APPLICATION_STATUS));
+        assertEquals(descriptor.getInterviewStatus().get(), new InterviewStatus(VALID_INTERVIEW_STATUS));
+
+        descriptor.setApplicationStatus(new ApplicationStatus(VALID_APPLICATION_REJECTED));
+        assertEquals(descriptor.getApplicationStatus().get(), new ApplicationStatus(VALID_APPLICATION_REJECTED));
+        assertEquals(descriptor.getInterviewStatus().get(), new InterviewStatus(VALID_INTERVIEW_COMPLETED));
     }
 
     @Test

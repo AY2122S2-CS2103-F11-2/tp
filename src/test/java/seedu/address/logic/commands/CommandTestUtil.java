@@ -46,7 +46,9 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
 
     public static final String VALID_APPLICATION_STATUS = "Pending";
+    public static final String VALID_APPLICATION_REJECTED = "Rejected";
     public static final String VALID_INTERVIEW_STATUS = "Not Scheduled";
+    public static final String VALID_INTERVIEW_COMPLETED = "Completed";
     public static final String VALID_AVAILABILITY_AMY = "1,2,3,4,5";
     public static final String VALID_AVAILABILITY_BOB = "1,2,6,7";
 
