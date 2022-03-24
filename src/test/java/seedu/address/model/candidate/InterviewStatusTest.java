@@ -18,7 +18,7 @@ public class InterviewStatusTest {
     }
 
     @Test
-    public void constructor_test_sucess() {
+    public void constructor_test_success() {
         InterviewStatus notScheduled = new InterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED);
         InterviewStatus scheduled = new InterviewStatus(VALID_INTERVIEW_SCHEDULED);
         InterviewStatus completed = new InterviewStatus(VALID_INTERVIEW_COMPLETED);

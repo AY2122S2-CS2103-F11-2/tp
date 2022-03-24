@@ -38,6 +38,7 @@ public class ApplicationStatusTest {
         assertFalse(ApplicationStatus.isValidStatus("accepts"));
         assertFalse(ApplicationStatus.isValidStatus("rejects"));
         assertFalse(ApplicationStatus.isValidStatus("denied"));
+        assertFalse(ApplicationStatus.isValidStatus("reject"));
 
         //correct format
         assertTrue(ApplicationStatus.isValidStatus("accepted"));
