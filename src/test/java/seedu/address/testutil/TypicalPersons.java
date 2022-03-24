@@ -1,13 +1,13 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AVAILABILITY_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AVAILABILITY_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_NOT_SCHEDULED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
@@ -36,8 +36,8 @@ public class TypicalPersons {
             .withEmail("E0123456@u.nus.edu")
             .withCourse("Business Analytics")
             .withTags("friends")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("1,2,3")
             .build();
     public static final Candidate BENSON = new CandidateBuilder()
@@ -47,8 +47,8 @@ public class TypicalPersons {
             .withEmail("E0234567@u.nus.edu")
             .withCourse("Computer Engineering")
             .withTags("owesMoney", "friends")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("2,3,4")
             .build();
     public static final Candidate CARL = new CandidateBuilder()
@@ -57,8 +57,8 @@ public class TypicalPersons {
             .withPhone("95352563")
             .withEmail("E0345678@u.nus.edu")
             .withCourse("Computer Science")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("3,4,5")
             .build();
     public static final Candidate DANIEL = new CandidateBuilder()
@@ -68,8 +68,8 @@ public class TypicalPersons {
             .withEmail("E0456789@u.nus.edu")
             .withCourse("Information Security")
             .withTags("friends")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("5,6,7")
             .build();
     public static final Candidate ELLE = new CandidateBuilder()
@@ -78,8 +78,8 @@ public class TypicalPersons {
             .withPhone("94822240")
             .withEmail("E0567890@u.nus.edu")
             .withCourse("Information Systems")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("1,3,5,7")
             .build();
     public static final Candidate FIONA = new CandidateBuilder()
@@ -88,8 +88,8 @@ public class TypicalPersons {
             .withPhone("94824270")
             .withEmail("E0678901@u.nus.edu")
             .withCourse("Business Analytics")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("2,4,6")
             .build();
     public static final Candidate GEORGE = new CandidateBuilder()
@@ -98,8 +98,8 @@ public class TypicalPersons {
             .withPhone("94824420")
             .withEmail("E0789012@u.nus.edu")
             .withCourse("Computer Engineering")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("2,3,4,5,6")
             .build();
 
@@ -110,8 +110,8 @@ public class TypicalPersons {
             .withPhone("84824240")
             .withEmail("E0890123@u.nus.edu")
             .withCourse("Computer Science")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("1,4,7")
             .build();
     public static final Candidate IDA = new CandidateBuilder()
@@ -120,8 +120,8 @@ public class TypicalPersons {
             .withPhone("84821310")
             .withEmail("E0901234@u.nus.edu")
             .withCourse("Information Security")
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability("3,4,5,6,7")
             .build();
 
@@ -133,8 +133,8 @@ public class TypicalPersons {
             .withEmail(VALID_EMAIL_AMY)
             .withCourse(VALID_COURSE_AMY)
             .withTags(VALID_TAG_FRIEND)
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability(VALID_AVAILABILITY_AMY)
             .build();
     public static final Candidate BOB = new CandidateBuilder()
@@ -144,8 +144,8 @@ public class TypicalPersons {
             .withEmail(VALID_EMAIL_BOB)
             .withCourse(VALID_COURSE_BOB)
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .withApplicationStatus(VALID_APPLICATION_STATUS)
-            .withInterviewStatus(VALID_INTERVIEW_STATUS)
+            .withApplicationStatus(VALID_APPLICATION_PENDING)
+            .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
             .withAvailability(VALID_AVAILABILITY_BOB)
             .build();
 
