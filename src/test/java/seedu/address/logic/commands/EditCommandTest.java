@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_REJECTED;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_STATUS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_COMPLETED;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_NOT_SCHEDULED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -162,12 +162,12 @@ public class EditCommandTest {
     public void execute_triggerByApplicationStatus_success() {
         EditPersonDescriptor descriptor = new EditCandidateDescriptorBuilder()
                 .withName(VALID_NAME_BOB)
-                .withApplicationStatus(VALID_APPLICATION_STATUS)
-                .withInterviewStatus(VALID_INTERVIEW_STATUS)
+                .withApplicationStatus(VALID_APPLICATION_PENDING)
+                .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
                 .build();
 
-        assertEquals(descriptor.getApplicationStatus().get(), new ApplicationStatus(VALID_APPLICATION_STATUS));
-        assertEquals(descriptor.getInterviewStatus().get(), new InterviewStatus(VALID_INTERVIEW_STATUS));
+        assertEquals(descriptor.getApplicationStatus().get(), new ApplicationStatus(VALID_APPLICATION_PENDING));
+        assertEquals(descriptor.getInterviewStatus().get(), new InterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED));
 
         descriptor.setApplicationStatus(new ApplicationStatus(VALID_APPLICATION_REJECTED));
         assertEquals(descriptor.getApplicationStatus().get(), new ApplicationStatus(VALID_APPLICATION_REJECTED));
