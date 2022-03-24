@@ -3,11 +3,10 @@ package seedu.address.model.candidate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_COMPLETED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_NOT_SCHEDULED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_SCHEDULED;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_COMPLETED;
 import static seedu.address.testutil.Assert.assertThrows;
-
 
 import org.junit.jupiter.api.Test;
 
