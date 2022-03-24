@@ -45,9 +45,12 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
-    public static final String VALID_APPLICATION_STATUS = "Pending";
+
+    public static final String VALID_APPLICATION_PENDING = "Pending";
+    public static final String VALID_APPLICATION_ACCEPTED = "Accepted";
     public static final String VALID_APPLICATION_REJECTED = "Rejected";
-    public static final String VALID_INTERVIEW_STATUS = "Not Scheduled";
+    public static final String VALID_INTERVIEW_NOT_SCHEDULED = "Not Scheduled";
+    public static final String VALID_INTERVIEW_SCHEDULED = "Scheduled";
     public static final String VALID_INTERVIEW_COMPLETED = "Completed";
     public static final String VALID_AVAILABILITY_AMY = "1,2,3,4,5";
     public static final String VALID_AVAILABILITY_BOB = "1,2,6,7";
@@ -72,8 +75,8 @@ public class CommandTestUtil {
     public static final String COURSE_DESC_BOB = " " + PREFIX_COURSE + VALID_COURSE_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
-    public static final String APPLICATION_STATUS_PENDING = " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATION_STATUS;
-    public static final String INTERVIEW_STATUS_PENDING = " " + PREFIX_INTERVIEW_STATUS + VALID_INTERVIEW_STATUS;
+    public static final String APPLICATION_STATUS_PENDING = " " + PREFIX_APPLICATION_STATUS + VALID_APPLICATION_PENDING;
+    public static final String INTERVIEW_STATUS_PENDING = " " + PREFIX_INTERVIEW_STATUS + VALID_INTERVIEW_NOT_SCHEDULED;
     public static final String AVAILABILITY_DESC_AMY = " " + PREFIX_AVAILABILITY + VALID_AVAILABILITY_AMY;
     public static final String AVAILABILITY_DESC_BOB = " " + PREFIX_AVAILABILITY + VALID_AVAILABILITY_BOB;
 

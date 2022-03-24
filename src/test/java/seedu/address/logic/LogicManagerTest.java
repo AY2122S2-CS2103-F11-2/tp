@@ -8,8 +8,8 @@ import static seedu.address.logic.commands.CommandTestUtil.COURSE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.STUDENT_ID_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_STATUS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_PENDING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_NOT_SCHEDULED;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -92,7 +92,7 @@ public class LogicManagerTest {
         String addCommand = AddCommand.COMMAND_WORD + STUDENT_ID_DESC_AMY + NAME_DESC_AMY
                 + PHONE_DESC_AMY + COURSE_DESC_AMY + AVAILABILITY_DESC_AMY;
         Candidate expectedCandidate = new CandidateBuilder(AMY).withTags()
-                .withApplicationStatus(VALID_APPLICATION_STATUS).withInterviewStatus(VALID_INTERVIEW_STATUS).build();
+                .withApplicationStatus(VALID_APPLICATION_PENDING).withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedCandidate);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

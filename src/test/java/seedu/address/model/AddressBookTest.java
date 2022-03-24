@@ -3,10 +3,10 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AVAILABILITY_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_STATUS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_NOT_SCHEDULED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
@@ -52,8 +52,8 @@ public class AddressBookTest {
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
         Candidate editedAlice = new CandidateBuilder(ALICE).withCourse(VALID_COURSE_BOB).withTags(VALID_TAG_HUSBAND)
-                .withApplicationStatus(VALID_APPLICATION_STATUS)
-                .withInterviewStatus(VALID_INTERVIEW_STATUS)
+                .withApplicationStatus(VALID_APPLICATION_PENDING)
+                .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
                 .withAvailability(VALID_AVAILABILITY_BOB)
                 .build();
         List<Candidate> newCandidates = Arrays.asList(ALICE, editedAlice);
