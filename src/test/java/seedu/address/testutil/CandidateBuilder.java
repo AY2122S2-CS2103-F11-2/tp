@@ -27,7 +27,7 @@ public class CandidateBuilder {
     public static final String DEFAULT_COURSE = "Computer Science";
     public static final String DEFAULT_APPLICATION_STATUS = "Pending";
     public static final String DEFAULT_INTERVIEW_STATUS = " Not Scheduled";
-    public static final String DEFAULT_AVAILABILITY = "1,2,3,4,5,6,7";
+    public static final String DEFAULT_AVAILABILITY = "1,2,3,4,5";
 
     private StudentId studentId;
     private Name name;

@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class Availability {
 
-    public static final String MESSAGE_CONSTRAINTS = "Availability should consists of a list of 7 numbers, "
-            + "ranging from 1 to 7, separated by commas ','\nEg. avail/1,2,3,4,5";
-    public static final String VALIDATION_REGEX = "^[1-7]{1}+(?:,[1-7]{1}+)*$";
-    private static final String[] WEEK = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+    public static final String MESSAGE_CONSTRAINTS = "Availability should consists of a list of 5 numbers, "
+            + "ranging from 1 to 5, separated by commas ','\nEg. avail/1,2,3,4,5";
+    public static final String VALIDATION_REGEX = "^[1-5]{1}+(?:,[1-5]{1}+)*$";
+    private static final String[] WEEK = {"Mon", "Tue", "Wed", "Thu", "Fri"};
 
     public final String availability;
     private List<String> availabilityList = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Availability {
      */
     public static boolean isValidDay(String test) {
         if (test.matches(VALIDATION_REGEX)) {
-            return test.split(",").length <= 7;
+            return test.split(",").length <= 5;
         }
         return false;
     }

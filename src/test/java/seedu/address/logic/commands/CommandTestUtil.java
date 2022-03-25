@@ -52,7 +52,7 @@ public class CommandTestUtil {
     public static final String VALID_INTERVIEW_COMPLETED = "Completed";
     public static final String VALID_INTERVIEW_NOT_SCHEDULED = "Not Scheduled";
     public static final String VALID_AVAILABILITY_AMY = "1,2,3,4,5";
-    public static final String VALID_AVAILABILITY_BOB = "1,2,6,7";
+    public static final String VALID_AVAILABILITY_BOB = "1,2";
 
     public static final LocalDateTime VALID_ALICE_INTERVIEW_DATE_TIME =
             LocalDateTime.of(2023, Month.FEBRUARY, 23, 15, 00);

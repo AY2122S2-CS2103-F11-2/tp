@@ -24,6 +24,7 @@ import seedu.address.model.ReadOnlyInterviewSchedule;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.candidate.Candidate;
 import seedu.address.model.interview.Interview;
+import seedu.address.model.util.SampleDataUtil;
 import seedu.address.testutil.CandidateBuilder;
 
 public class AddCommandTest {
@@ -55,8 +56,10 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
+        Candidate[] candidates = new SampleDataUtil().getSamplePersons();
         Candidate alice = new CandidateBuilder().withName("Alice").build();
         Candidate bob = new CandidateBuilder().withName("Bob").build();
+        Candidate charlotte = new CandidateBuilder().withName("Charlotte Oliveiro").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
@@ -75,6 +78,8 @@ public class AddCommandTest {
 
         // different person -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
+
+        assertTrue(charlotte.getName().equals(candidates[2].getName()));
     }
 
     /**

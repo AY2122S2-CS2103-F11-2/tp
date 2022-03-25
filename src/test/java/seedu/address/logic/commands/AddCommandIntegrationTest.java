@@ -31,6 +31,7 @@ public class AddCommandIntegrationTest {
         Candidate validCandidate = new CandidateBuilder().build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), model.getInterviewSchedule(), new UserPrefs());
+        System.out.println(model.getAddressBook().getPersonList());
         expectedModel.addPerson(validCandidate);
 
         assertCommandSuccess(new AddCommand(validCandidate), model,

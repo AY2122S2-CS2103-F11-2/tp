@@ -70,7 +70,7 @@ public class TypicalPersons {
             .withTags("friends")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
             .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
-            .withAvailability("5,6,7")
+            .withAvailability("5")
             .build();
     public static final Candidate ELLE = new CandidateBuilder()
             .withStudentId("E0567890")
@@ -80,7 +80,7 @@ public class TypicalPersons {
             .withCourse("Information Systems")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
             .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
-            .withAvailability("1,3,5,7")
+            .withAvailability("1,3,5")
             .build();
     public static final Candidate FIONA = new CandidateBuilder()
             .withStudentId("E0678901")
@@ -90,7 +90,7 @@ public class TypicalPersons {
             .withCourse("Business Analytics")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
             .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
-            .withAvailability("2,4,6")
+            .withAvailability("2,4")
             .build();
     public static final Candidate GEORGE = new CandidateBuilder()
             .withStudentId("E0789012")
@@ -100,7 +100,7 @@ public class TypicalPersons {
             .withCourse("Computer Engineering")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
             .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
-            .withAvailability("2,3,4,5,6")
+            .withAvailability("2,3,4,5")
             .build();
 
     // Manually added
@@ -112,7 +112,7 @@ public class TypicalPersons {
             .withCourse("Computer Science")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
             .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
-            .withAvailability("1,4,7")
+            .withAvailability("1,4")
             .build();
     public static final Candidate IDA = new CandidateBuilder()
             .withStudentId("E0901234")
@@ -122,7 +122,7 @@ public class TypicalPersons {
             .withCourse("Information Security")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
             .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED)
-            .withAvailability("3,4,5,6,7")
+            .withAvailability("3,4,5")
             .build();
 
     // Manually added - Candidate's details found in {@code CommandTestUtil}

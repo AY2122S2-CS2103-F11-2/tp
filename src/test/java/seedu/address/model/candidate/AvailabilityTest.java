@@ -37,8 +37,8 @@ public class AvailabilityTest {
 
         // valid availability
         assertTrue(Availability.isValidDay("2"));
-        assertTrue(Availability.isValidDay("1,2,3,4,5,6,7"));
-        assertTrue(Availability.isValidDay("7,6,5,4,3,2,1"));
+        assertTrue(Availability.isValidDay("1,2,3,4,5"));
+        assertTrue(Availability.isValidDay("5,4,3,2,1"));
     }
 
     private void assertFalse(boolean validDay) {

@@ -7,7 +7,7 @@
     "course": "Computer Science",
     "applicationStatus": "Pending",
     "interviewStatus": "Not Scheduled",
-    "availability": "1,2,3,4,5,6,7"
+    "availability": "1,2,3,4,5"
   }, {
     "studentId": "E0123456",
     "name": "Person With Invalid Phone Field",
