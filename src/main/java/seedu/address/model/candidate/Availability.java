@@ -3,17 +3,23 @@ package seedu.address.model.candidate;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Represents a Candidate's availability.
- * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidDay(String)}
  */
 public class Availability {
 
-    public static final String MESSAGE_CONSTRAINTS = "Availability should consists of a list of numbers from 1 to 7, "
-            + "separated by commas ','";
+    public static final String MESSAGE_CONSTRAINTS = "Availability should consists of a list of 7 numbers, "
+            + "ranging from 1 to 7, separated by commas ','\nEg. avail/1,2,3,4,5";
     public static final String VALIDATION_REGEX = "^[1-7]{1}+(?:,[1-7]{1}+)*$";
+    private static final String[] WEEK = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
     public final String availability;
+    private List<String> availabilityList = new ArrayList<>();
 
     /**
      * Constructs a {@code Availability}.
@@ -22,15 +28,19 @@ public class Availability {
      */
     public Availability(String availability) {
         requireNonNull(availability);
-        checkArgument(isValidDate(availability), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDay(availability), MESSAGE_CONSTRAINTS);
         this.availability = availability;
+        this.availabilityList = toList(availability);
     }
 
     /**
      * Returns true if a given string is a valid date format.
      */
-    public static boolean isValidDate(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidDay(String test) {
+        if (test.matches(VALIDATION_REGEX)) {
+            return test.split(",").length <= 7;
+        }
+        return false;
     }
 
     @Override
@@ -49,6 +59,19 @@ public class Availability {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + availability + ']';
+        return availabilityList.toString();
+    }
+
+    public List<String> getList() {
+        return availabilityList;
+    }
+
+    private List<String> toList(String availability) {
+        HashMap<String, String> map = new HashMap<>();
+        for (String day: availability.split(",")) {
+            map.put(day, WEEK[Integer.parseInt(day) - 1]);
+        }
+        availabilityList.addAll(map.values());
+        return availabilityList;
     }
 }

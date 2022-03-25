@@ -33,7 +33,10 @@
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <Label fx:id="applicationStatus" styleClass="cell_small_label" text="\$app_status" />
       <Label fx:id="interviewStatus" styleClass="cell_small_label" text="\$interview_status" />
-      <Label fx:id="availability" styleClass="cell_small_label" text="\$availability" />
+      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="0">
+        <Label fx:id="availability" styleClass="cell_small_label" text="\$availability" />
+        <FlowPane fx:id="availableDays" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>

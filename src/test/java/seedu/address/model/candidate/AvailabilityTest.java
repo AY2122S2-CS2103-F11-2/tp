@@ -1,8 +1,11 @@
 package seedu.address.model.candidate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,27 +17,40 @@ public class AvailabilityTest {
     }
 
     @Test
-    public void isValidDate() {
+    public void isValidDay() {
         // null availability
-        assertThrows(NullPointerException.class, () -> Availability.isValidDate(null));
+        assertThrows(NullPointerException.class, () -> Availability.isValidDay(null));
 
         // invalid availability
-        assertFalse(Availability.isValidDate(""));
-        assertFalse(Availability.isValidDate(","));
-        assertFalse(Availability.isValidDate("0"));
-        assertFalse(Availability.isValidDate("8"));
-        assertFalse(Availability.isValidDate(",1"));
-        assertFalse(Availability.isValidDate("1,"));
-        assertFalse(Availability.isValidDate("1,,2"));
-        assertFalse(Availability.isValidDate("12"));
-        assertFalse(Availability.isValidDate("a"));
-        assertFalse(Availability.isValidDate(",a"));
-        assertFalse(Availability.isValidDate("a,"));
-        assertFalse(Availability.isValidDate("a,a"));
+        assertFalse(Availability.isValidDay(""));
+        assertFalse(Availability.isValidDay(","));
+        assertFalse(Availability.isValidDay("0"));
+        assertFalse(Availability.isValidDay("8"));
+        assertFalse(Availability.isValidDay(",1"));
+        assertFalse(Availability.isValidDay("1,"));
+        assertFalse(Availability.isValidDay("1,,2"));
+        assertFalse(Availability.isValidDay("12"));
+        assertFalse(Availability.isValidDay("a"));
+        assertFalse(Availability.isValidDay(",a"));
+        assertFalse(Availability.isValidDay("a,"));
+        assertFalse(Availability.isValidDay("a,a"));
 
         // valid availability
-        assertTrue(Availability.isValidDate("2"));
-        assertTrue(Availability.isValidDate("1,2,3,4,5,6,7"));
-        assertTrue(Availability.isValidDate("7,6,5,4,3,2,1"));
+        assertTrue(Availability.isValidDay("2"));
+        assertTrue(Availability.isValidDay("1,2,3,4,5,6,7"));
+        assertTrue(Availability.isValidDay("7,6,5,4,3,2,1"));
+    }
+
+    private void assertFalse(boolean validDay) {
+    }
+
+    @Test
+    public void getList_return_list() {
+        List<String> test = new ArrayList<>();
+        test.add("Mon");
+        test.add("Tue");
+        test.add("Wed");
+        Availability availability = new Availability("1,2,3");
+        assertEquals(availability.getList(), test);
     }
 }

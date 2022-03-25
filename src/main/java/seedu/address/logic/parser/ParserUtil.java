@@ -204,7 +204,7 @@ public class ParserUtil {
     public static Availability parseAvailability(String availability) throws ParseException {
         requireNonNull(availability);
         String trimmedAvailability = availability.trim();
-        if (!Availability.isValidDate(trimmedAvailability)) {
+        if (!Availability.isValidDay(trimmedAvailability)) {
             throw new ParseException(Availability.MESSAGE_CONSTRAINTS);
         }
         return new Availability(trimmedAvailability);

@@ -49,6 +49,8 @@ public class PersonCard extends UiPart<Region> {
     private Label availability;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane availableDays;
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -65,7 +67,9 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         applicationStatus.setText(APPLICATION_STATUS_MSG + candidate.getApplicationStatus().toString());
         interviewStatus.setText(INTERVIEW_STATUS_MSG + candidate.getInterviewStatus().toString());
-        availability.setText(AVAILABILITY_MSG + candidate.getAvailability().availability);
+        availability.setText(AVAILABILITY_MSG);
+        candidate.getAvailability().getList()
+                .forEach(availability -> availableDays.getChildren().add(new Label(availability)));
     }
 
     @Override

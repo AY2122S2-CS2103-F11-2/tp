@@ -135,7 +135,7 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Availability.class.getSimpleName()));
         }
-        if (!Availability.isValidDate(availability)) {
+        if (!Availability.isValidDay(availability)) {
             throw new IllegalValueException(Availability.MESSAGE_CONSTRAINTS);
         }
         final Availability modelAvailability = new Availability(availability);
