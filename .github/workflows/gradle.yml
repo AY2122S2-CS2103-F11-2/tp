@@ -43,3 +43,5 @@ jobs:
         with:
           file: ${{ github.workspace }}/build/reports/jacoco/coverage/coverage.xml
           fail_ci_if_error: true
+          ignore:
+            - "/src/main/java/ui”
