@@ -45,36 +45,36 @@ public class StudentIdContainsKeywordsPredicateTest {
     public void test_studentIdContainsKeywords_returnsTrue() {
         // One keyword
         StudentIdContainsKeywordsPredicate predicate = new StudentIdContainsKeywordsPredicate(Collections.singletonList(
-                "E0234"));
-        assertTrue(predicate.test(new CandidateBuilder().withStudentId("E0234149").build()));
+                "A0234"));
+        assertTrue(predicate.test(new CandidateBuilder().withStudentId("A0234149B").build()));
 
         // Multiple keywords
-        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("E0234", "414"));
-        assertTrue(predicate.test(new CandidateBuilder().withStudentId("E0234149").build()));
+        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("A0234", "414"));
+        assertTrue(predicate.test(new CandidateBuilder().withStudentId("A0234149B").build()));
 
         // Only one matching keyword
-        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("E0234", "414"));
-        assertTrue(predicate.test(new CandidateBuilder().withStudentId("E0234119").build()));
+        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("A0234", "414"));
+        assertTrue(predicate.test(new CandidateBuilder().withStudentId("A0234119B").build()));
 
         // Mixed-case keywords
-        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("e0234", "E0234"));
-        assertTrue(predicate.test(new CandidateBuilder().withStudentId("E0234119").build()));
+        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("a0234", "A0234"));
+        assertTrue(predicate.test(new CandidateBuilder().withStudentId("A0234119B").build()));
     }
 
     @Test
     public void test_studentIdDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         StudentIdContainsKeywordsPredicate predicate = new StudentIdContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new CandidateBuilder().withStudentId("E0234119").build()));
+        assertFalse(predicate.test(new CandidateBuilder().withStudentId("A0234119B").build()));
 
         // Non-matching keyword
-        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("A0234"));
-        assertFalse(predicate.test(new CandidateBuilder().withStudentId("E0234119").build()));
+        predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("E0234"));
+        assertFalse(predicate.test(new CandidateBuilder().withStudentId("A0234119B").build()));
 
         // Keywords match other fields, but does/do not match student id
         predicate = new StudentIdContainsKeywordsPredicate(Arrays.asList("87654321", "alice@email.com", "Main",
                 "Street"));
         assertFalse(predicate.test(new CandidateBuilder().withName("Alice").withPhone("87654321")
-                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("E0324444").build()));
+                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("A0324444B").build()));
     }
 }

@@ -141,5 +141,7 @@ public interface Model {
      */
     void updateSortedCandidateList(Comparator<Candidate> sortComparator);
 
+    void updateInterviewCandidate(Interview target, Interview editedInterview);
+
     void deletePastInterviewsForInterviewList(LocalDateTime localDateTime);
 }

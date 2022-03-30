@@ -33,9 +33,9 @@ public class CandidateTest {
                 .withCourse(VALID_COURSE_BOB).build();
         assertTrue(ALICE.isSameCandidate(editedAlice));
 
-        // different studentId, all other attributes same -> returns false
+        // different studentId, all other attributes same, incl. email -> returns true
         editedAlice = new CandidateBuilder(ALICE).withStudentId(VALID_STUDENT_ID_BOB).build();
-        assertFalse(ALICE.isSameCandidate(editedAlice));
+        assertTrue(ALICE.isSameCandidate(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
         Candidate editedBob = new CandidateBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
@@ -46,9 +46,9 @@ public class CandidateTest {
         editedBob = new CandidateBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertTrue(BOB.isSameCandidate(editedBob));
 
-        // different studentId, all other attributes same -> returns false
+        // different studentId, all other attributes same, incl. email -> returns true
         editedBob = new CandidateBuilder(BOB).withStudentId(VALID_STUDENT_ID_AMY).build();
-        assertFalse(BOB.isSameCandidate(editedBob));
+        assertTrue(BOB.isSameCandidate(editedBob));
 
         // totally different candidates
         assertFalse(ALICE.isSameCandidate(BOB));

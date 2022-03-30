@@ -21,7 +21,7 @@ public class Candidate {
     private final Course course;
     private final Seniority seniority;
     private final ApplicationStatus applicationStatus;
-    private InterviewStatus interviewStatus;
+    private final InterviewStatus interviewStatus;
     private final Availability availability;
 
     /**
@@ -88,7 +88,8 @@ public class Candidate {
         }
 
         return otherCandidate != null
-                && otherCandidate.getStudentId().equals(getStudentId());
+                && (otherCandidate.getStudentId().equals(getStudentId())
+                || otherCandidate.getEmail().equals(getEmail()));
     }
 
     /**

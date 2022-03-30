@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SENIORITY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CANDIDATES;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INTERVIEWS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -32,6 +33,7 @@ import seedu.address.model.candidate.Name;
 import seedu.address.model.candidate.Phone;
 import seedu.address.model.candidate.Seniority;
 import seedu.address.model.candidate.StudentId;
+import seedu.address.model.interview.Interview;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -80,6 +82,7 @@ public class EditCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Candidate> lastShownList = model.getFilteredCandidateList();
+        List<Interview> interviewSchedule = model.getFilteredInterviewSchedule();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CANDIDATE_DISPLAYED_INDEX);
@@ -94,6 +97,17 @@ public class EditCommand extends Command {
 
         model.setCandidate(candidateToEdit, editedCandidate);
         model.updateFilteredCandidateList(PREDICATE_SHOW_ALL_CANDIDATES);
+
+
+        for (int i = 0; i < interviewSchedule.size(); i++) {
+            if (candidateToEdit.equals(interviewSchedule.get(i).getCandidate())) {
+                Interview interviewToUpdate = interviewSchedule.get(i);
+                Interview updatedInterview = new Interview(editedCandidate, interviewToUpdate.getInterviewDateTime());
+                model.updateInterviewCandidate(interviewToUpdate, updatedInterview);
+            }
+        }
+        model.updateFilteredInterviewSchedule(PREDICATE_SHOW_ALL_INTERVIEWS);
+
         return new CommandResult(String.format(MESSAGE_EDIT_CANDIDATE_SUCCESS, editedCandidate));
     }
 

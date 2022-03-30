@@ -9,12 +9,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class StudentId {
     public static final String MESSAGE_CONSTRAINTS =
-            "IDs should only contain E and 7 digits/numbers e.g. E0123456, and it should not be blank";
+            "IDs should only contain A, 7 digits/numbers and an alphabet at the end"
+            + " e.g. A0123456X, and it should not be blank";
 
     /*
      * The format of Student ID should be E followed by 7 digits without spacing.
      */
-    public static final String VALIDATION_REGEX = "E[\\p{Digit}]{7}";
+    public static final String VALIDATION_REGEX = "A[\\p{Digit}]{7}[\\p{Alpha}]{1}";
 
     public final String studentId;
 

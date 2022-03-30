@@ -35,8 +35,8 @@ import seedu.address.testutil.EditCandidateDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_STUDENT_ID_AMY = "E0123456";
-    public static final String VALID_STUDENT_ID_BOB = "E0234567";
+    public static final String VALID_STUDENT_ID_AMY = "A0123456B";
+    public static final String VALID_STUDENT_ID_BOB = "A0234567B";
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_PHONE_AMY = "91111111";

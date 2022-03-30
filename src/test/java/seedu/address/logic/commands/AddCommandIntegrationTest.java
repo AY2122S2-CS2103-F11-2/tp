@@ -30,7 +30,7 @@ public class AddCommandIntegrationTest {
     public void execute_newCandidate_success() {
         Candidate validCandidate = new CandidateBuilder()
                 .withName("Valid Candidate")
-                .withStudentId("E0563827").build();
+                .withStudentId("A0563827B").build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), model.getInterviewSchedule(), new UserPrefs());
         expectedModel.addCandidate(validCandidate);

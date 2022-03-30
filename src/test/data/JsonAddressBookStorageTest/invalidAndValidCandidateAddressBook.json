@@ -1,6 +1,6 @@
 {
   "candidates": [ {
-    "studentId": "E0123456",
+    "studentId": "A0123456B",
     "name": "Valid Candidate",
     "phone": "94824240",
     "email": "E0123456@u.nus.edu",
@@ -10,7 +10,7 @@
     "interviewStatus": "Not Scheduled",
     "availability": "1,2,3,4,5"
   }, {
-    "studentId": "E0123456",
+    "studentId": "A0123456B",
     "name": "Candidate With Invalid Phone Field",
     "phone": "948asdf2424",
     "email": "E0123456@u.nus.edu",

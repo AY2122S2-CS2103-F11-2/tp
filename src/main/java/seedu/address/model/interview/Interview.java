@@ -122,6 +122,7 @@ public class Interview {
         return this.interviewDateTime.toLocalDate();
     }
 
+
     /**
      * Returns true if both candidates have the same identity and data fields.
      * This defines a stronger notion of equality between two candidates.

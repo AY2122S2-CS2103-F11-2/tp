@@ -31,10 +31,10 @@ import seedu.address.model.candidate.Candidate;
 public class TypicalCandidates {
 
     public static final Candidate ALICE = new CandidateBuilder()
-            .withStudentId("E0123450")
+            .withStudentId("A0123451B")
             .withName("Alice Pauline")
             .withPhone("94351253")
-            .withEmail("E0123456@u.nus.edu")
+            .withEmail("E0123450@u.nus.edu")
             .withCourse("Business Analytics")
             .withSeniority("2")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
@@ -42,10 +42,10 @@ public class TypicalCandidates {
             .withAvailability("1,2,3")
             .build();
     public static final Candidate BENSON = new CandidateBuilder()
-            .withStudentId("E0234567")
+            .withStudentId("A0234567B")
             .withName("Benson Meier")
             .withPhone("98765432")
-            .withEmail("E0234567@u.nus.edu")
+            .withEmail("E0234560@u.nus.edu")
             .withCourse("Computer Engineering")
             .withSeniority("2")
             .withApplicationStatus(VALID_APPLICATION_PENDING)
@@ -53,7 +53,7 @@ public class TypicalCandidates {
             .withAvailability("2,3,4")
             .build();
     public static final Candidate CARL = new CandidateBuilder()
-            .withStudentId("E0345678")
+            .withStudentId("A0345678B")
             .withName("Carl Kurz")
             .withPhone("95352563")
             .withEmail("E0345678@u.nus.edu")
@@ -64,7 +64,7 @@ public class TypicalCandidates {
             .withAvailability("3,4,5")
             .build();
     public static final Candidate DANIEL = new CandidateBuilder()
-            .withStudentId("E0456789")
+            .withStudentId("A0456789B")
             .withName("Daniel Meier")
             .withPhone("87652533")
             .withEmail("E0456789@u.nus.edu")
@@ -75,7 +75,7 @@ public class TypicalCandidates {
             .withAvailability("5")
             .build();
     public static final Candidate ELLE = new CandidateBuilder()
-            .withStudentId("E0567890")
+            .withStudentId("A0567890B")
             .withName("Elle Meyer")
             .withPhone("94822240")
             .withEmail("E0567890@u.nus.edu")
@@ -86,7 +86,7 @@ public class TypicalCandidates {
             .withAvailability("1,3,5")
             .build();
     public static final Candidate FIONA = new CandidateBuilder()
-            .withStudentId("E0678901")
+            .withStudentId("A0678901B")
             .withName("Fiona Kunz")
             .withPhone("94824270")
             .withEmail("E0678901@u.nus.edu")
@@ -97,7 +97,7 @@ public class TypicalCandidates {
             .withAvailability("2,4")
             .build();
     public static final Candidate GEORGE = new CandidateBuilder()
-            .withStudentId("E0789012")
+            .withStudentId("A0789012B")
             .withName("George Best")
             .withPhone("94824420")
             .withEmail("E0789012@u.nus.edu")
@@ -110,7 +110,7 @@ public class TypicalCandidates {
 
     // Manually added
     public static final Candidate HOON = new CandidateBuilder()
-            .withStudentId("E0890123")
+            .withStudentId("A0890123B")
             .withName("Hoon Meier")
             .withPhone("84824240")
             .withEmail("E0890123@u.nus.edu")
@@ -122,7 +122,7 @@ public class TypicalCandidates {
             .build();
 
     public static final Candidate IDA = new CandidateBuilder()
-            .withStudentId("E0901234")
+            .withStudentId("A0901234B")
             .withName("Ida Mueller")
             .withPhone("84821310")
             .withEmail("E0901234@u.nus.edu")

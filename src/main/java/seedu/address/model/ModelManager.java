@@ -203,6 +203,11 @@ public class ModelManager implements Model {
         updateFilteredInterviewSchedule(PREDICATE_SHOW_ALL_INTERVIEWS);
     }
 
+    @Override
+    public void updateInterviewCandidate(Interview target, Interview editedInterview) {
+        interviewSchedule.updateInterviewCandidate(target, editedInterview);
+    }
+
     /**
      * Deletes all past interviews from the list.
      * @param localDateTime Current date time.

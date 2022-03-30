@@ -19,7 +19,7 @@ public class Email {
             + "(-" + ALPHANUMERIC_NO_UNDERSCORE + ")*";
     private static final String DOMAIN_LAST_PART_REGEX = "(" + DOMAIN_PART_REGEX + "){2,}$"; // At least two chars
     private static final String DOMAIN_REGEX = "(" + DOMAIN_PART_REGEX + "\\.)*" + DOMAIN_LAST_PART_REGEX;
-    private static final String USER_NAME = "[E][\\p{Digit}]{7}";
+    private static final String USER_NAME = "[e|E][\\p{Digit}]{7}";
     private static final String NUS_DOMAIN = "@u.nus.edu";
     public static final String VALIDATION_REGEX = USER_NAME + NUS_DOMAIN;
 
@@ -33,7 +33,7 @@ public class Email {
     public Email(String email) {
         requireNonNull(email);
         checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
-        this.value = email;
+        this.value = email.substring(0, 1).toUpperCase() + email.substring(1).toLowerCase();
     }
 
     /**

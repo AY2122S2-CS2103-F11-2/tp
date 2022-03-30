@@ -30,22 +30,22 @@ public class SampleDataUtil {
 
     public static Candidate[] getSampleCandidates() {
         return new Candidate[] {
-            new Candidate(new StudentId("E0123456"), new Name("Alex Yeoh"), new Phone("87438807"),
+            new Candidate(new StudentId("A0123456B"), new Name("Alex Yeoh"), new Phone("87438807"),
                     new Email("E0123456@u.nus.edu"), new Course("Business Analytics"), new Seniority("1"),
                     PENDING, INTERVIEW_NOT_SCHEDULED, new Availability("1,2,3,4,5")),
-            new Candidate(new StudentId("E0234567"), new Name("Bernice Yu"), new Phone("99272758"),
+            new Candidate(new StudentId("A0234567B"), new Name("Bernice Yu"), new Phone("99272758"),
                     new Email("E0234567@u.nus.edu"), new Course("Computer Engineering"), new Seniority("2"),
                     PENDING, INTERVIEW_NOT_SCHEDULED, new Availability("1,2,3,4,5")),
-            new Candidate(new StudentId("E0345678"), new Name("Charlotte Oliveiro"), new Phone("93210283"),
+            new Candidate(new StudentId("A0345678B"), new Name("Charlotte Oliveiro"), new Phone("93210283"),
                     new Email("E0345678@u.nus.edu"), new Course("Computer Science"), new Seniority("3"),
                     PENDING, INTERVIEW_NOT_SCHEDULED, new Availability("1,2,3")),
-            new Candidate(new StudentId("E0456789"), new Name("David Li"), new Phone("91031282"),
+            new Candidate(new StudentId("A0456789B"), new Name("David Li"), new Phone("91031282"),
                     new Email("E0456789@u.nus.edu"), new Course("Information Security"), new Seniority("4"),
                     PENDING, INTERVIEW_NOT_SCHEDULED, new Availability("3,4,5")),
-            new Candidate(new StudentId("E0567890"), new Name("Irfan Ibrahim"), new Phone("92492021"),
+            new Candidate(new StudentId("A0567890B"), new Name("Irfan Ibrahim"), new Phone("92492021"),
                     new Email("E0567890@u.nus.edu"), new Course("Information Systems"), new Seniority("1"),
                     PENDING, INTERVIEW_NOT_SCHEDULED, new Availability("4,5")),
-            new Candidate(new StudentId("E0678901"), new Name("Roy Balakrishnan"), new Phone("92624417"),
+            new Candidate(new StudentId("A0678901B"), new Name("Roy Balakrishnan"), new Phone("92624417"),
                     new Email("E0678901@u.nus.edu"), new Course("Computer Science"), new Seniority("2"),
                     PENDING, INTERVIEW_NOT_SCHEDULED, new Availability("3,5"))
         };
@@ -60,8 +60,8 @@ public class SampleDataUtil {
     }
 
     public static ReadOnlyInterviewSchedule getEmptyInterviewList() {
-        InterviewSchedule emptyList = new InterviewSchedule();
-        return emptyList;
+        InterviewSchedule interviewSchedule = new InterviewSchedule();
+        return interviewSchedule;
     }
 
     /**

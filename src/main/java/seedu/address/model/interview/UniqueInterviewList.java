@@ -67,6 +67,22 @@ public class UniqueInterviewList implements Iterable<Interview> {
     }
 
     /**
+     * Replaces the interview {@code target} in the list with {@code editedInterview}, without checking for
+     * any conflicting interview as only the candidate field in the {@code editedInterview} is modified.
+     * {@code target} must exist in the schedule.
+     */
+    public void updateInterviewCandidate (Interview target, Interview editedInterview) {
+        requireAllNonNull(target, editedInterview);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new InterviewNotFoundException();
+        }
+
+        internalList.set(index, editedInterview);
+    }
+
+    /**
      * Remove an interview from the list.
      */
     public void remove(Interview toRemove) {

@@ -84,36 +84,37 @@ public class MainApp extends Application {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         Optional<ReadOnlyInterviewSchedule> interviewListOptional;
-        ReadOnlyInterviewSchedule initialInterviewList;
-        boolean deletedInterviewList = false;
+        ReadOnlyInterviewSchedule initialInterviewSchedule;
+        boolean isDeletedInterviewList = false;
+
         try {
             addressBookOptional = storage.readAddressBook();
             interviewListOptional = storage.readInterviewSchedule();
-            initialInterviewList = interviewListOptional.orElseGet(SampleDataUtil::getEmptyInterviewList);
-            //Does not make sense for sample interview list. Change to empty list
-            if (!interviewListOptional.isPresent()) {
-                logger.info("Data file for interviews not found. Will be starting with a sample InterviewSchedule");
-                deletedInterviewList = true;
-                initialInterviewList = SampleDataUtil.getEmptyInterviewList();
-            }
             if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample TalentAssistant");
-                initialInterviewList = SampleDataUtil.getEmptyInterviewList();
+                logger.info("Data file for candidates not found. Will be starting with a sample TalentAssistant "
+                        + "with an empty InterviewSchedule");
+                initialInterviewSchedule = SampleDataUtil.getEmptyInterviewList();
+            } else {
+                if (!interviewListOptional.isPresent()) {
+                    logger.info("Data file for interviews not found. Will be starting with an empty InterviewSchedule");
+                    isDeletedInterviewList = true;
+                }
+                initialInterviewSchedule = interviewListOptional.orElseGet(SampleDataUtil::getEmptyInterviewList);
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty TalentAssistant");
             initialData = new AddressBook();
-            initialInterviewList = new InterviewSchedule();
+            initialInterviewSchedule = new InterviewSchedule();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty TalentAssistant");
             initialData = new AddressBook();
-            initialInterviewList = new InterviewSchedule();
+            initialInterviewSchedule = new InterviewSchedule();
         }
-        if (deletedInterviewList) {
-            return new ModelManager(initialData, initialInterviewList, userPrefs, deletedInterviewList);
+        if (isDeletedInterviewList) {
+            return new ModelManager(initialData, initialInterviewSchedule, userPrefs, isDeletedInterviewList);
         } else {
-            return new ModelManager(initialData, initialInterviewList, userPrefs);
+            return new ModelManager(initialData, initialInterviewSchedule, userPrefs);
         }
     }
 

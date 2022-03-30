@@ -92,8 +92,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + STUDENT_ID_DESC_AMY + NAME_DESC_AMY
-                + PHONE_DESC_AMY + EMAIL_DESC_AMY + COURSE_DESC_AMY + SENIORITY_DESC_AMY
-                + AVAILABILITY_DESC_AMY;
+                + PHONE_DESC_AMY + EMAIL_DESC_AMY + COURSE_DESC_AMY + SENIORITY_DESC_AMY + AVAILABILITY_DESC_AMY;
         Candidate expectedCandidate = new CandidateBuilder(AMY)
                 .withApplicationStatus(VALID_APPLICATION_PENDING)
                 .withInterviewStatus(VALID_INTERVIEW_NOT_SCHEDULED).build();

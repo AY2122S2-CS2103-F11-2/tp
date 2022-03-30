@@ -50,11 +50,11 @@ public class TypicalInterviews {
      * Returns an {@code AddressBook} with all the typical candidates.
      */
     public static InterviewSchedule getTypicalInterviewSchedule() {
-        InterviewSchedule schedule = new InterviewSchedule();
+        InterviewSchedule interviewSchedule = new InterviewSchedule();
         for (Interview interview : getTypicalInterviews()) {
-            schedule.addInterview(interview);
+            interviewSchedule.addInterview(interview);
         }
-        return schedule;
+        return interviewSchedule;
     }
 
     public static List<Interview> getTypicalInterviews() {

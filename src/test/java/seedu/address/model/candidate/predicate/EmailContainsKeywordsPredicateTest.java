@@ -70,9 +70,9 @@ public class EmailContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new CandidateBuilder().withEmail("E0123456@u.nus.edu").build()));
 
         // Keywords match other fields, but does/do not match email
-        predicate = new EmailContainsKeywordsPredicate(Arrays.asList("87654321", "E0324444", "Main",
+        predicate = new EmailContainsKeywordsPredicate(Arrays.asList("87654321", "A0324444B", "Main",
                 "Street"));
         assertFalse(predicate.test(new CandidateBuilder().withName("Alice").withPhone("87654321")
-                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("E0324444").build()));
+                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("A0324444B").build()));
     }
 }

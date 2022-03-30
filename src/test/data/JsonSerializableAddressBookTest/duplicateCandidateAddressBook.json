@@ -1,6 +1,6 @@
 {
   "candidates": [ {
-    "studentId": "E0123456",
+    "studentId": "A0123456B",
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "E0123456@u.nus.edu",
@@ -11,7 +11,7 @@
     "interviewStatus": "Not Scheduled",
     "availability": "1,2,3,4,5"
   }, {
-    "studentId": "E0123456",
+    "studentId": "A0123456B",
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "E0123456@u.nus.edu",

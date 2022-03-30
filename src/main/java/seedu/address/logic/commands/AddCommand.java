@@ -30,7 +30,7 @@ public class AddCommand extends Command {
             + PREFIX_SENIORITY + "SENIORITY "
             + PREFIX_AVAILABILITY + "AVAILABILITY \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_ID + "E0123456 "
+            + PREFIX_ID + "A0123456B "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "E0123456@u.nus.edu "

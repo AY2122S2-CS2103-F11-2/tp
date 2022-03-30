@@ -46,7 +46,7 @@ public class CandidateContainsKeywordsPredicateTest {
     public void test_candidateContainsKeywords_returnsTrue() {
         Candidate candidate = new CandidateBuilder().withName("Alice").withPhone("87654321")
                 .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics")
-                .withStudentId("E0324444").withAvailability("1,2,3").withSeniority("1").build();
+                .withStudentId("A0324444B").withAvailability("1,2,3").withSeniority("1").build();
 
         // One keyword
         CandidateContainsKeywordsPredicate predicate =
@@ -104,11 +104,11 @@ public class CandidateContainsKeywordsPredicateTest {
         // Zero keywords
         CandidateContainsKeywordsPredicate predicate = new CandidateContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new CandidateBuilder().withName("Alice").withPhone("87654321")
-                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("E0324444").build()));
+                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("A0324444B").build()));
 
         // Non-matching keyword
         predicate = new CandidateContainsKeywordsPredicate(Arrays.asList("Carol Alice"));
         assertFalse(predicate.test(new CandidateBuilder().withName("Alice").withPhone("87654321")
-                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("E0324444").build()));
+                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("A0324444B").build()));
     }
 }

@@ -1,6 +1,6 @@
 {
   "candidates": [ {
-    "studentId": "E0123456",
+    "studentId": "A0123456B",
     "name": "Candidate with invalid name field: Ha!ns Mu@ster",
     "phone": "94824240",
     "email": "E0123456@u.nus.edu",

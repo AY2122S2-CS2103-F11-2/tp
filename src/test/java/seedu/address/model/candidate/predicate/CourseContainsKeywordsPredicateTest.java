@@ -71,9 +71,9 @@ public class CourseContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new CandidateBuilder().withName("Computer Science").build()));
 
         // Keywords match other fields, but does/do not match course
-        predicate = new CourseContainsKeywordsPredicate(Arrays.asList("87654321", "E0123456@u.nus.edu", "E0324444",
+        predicate = new CourseContainsKeywordsPredicate(Arrays.asList("87654321", "E0123456@u.nus.edu", "A0324444B",
                 "Street"));
         assertFalse(predicate.test(new CandidateBuilder().withName("Alice").withPhone("87654321")
-                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("E0324444").build()));
+                .withEmail("E0123456@u.nus.edu").withCourse("Business Analytics").withStudentId("A0324444B").build()));
     }
 }

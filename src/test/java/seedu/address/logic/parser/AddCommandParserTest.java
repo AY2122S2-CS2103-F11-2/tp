@@ -20,7 +20,6 @@ import static seedu.address.logic.commands.CommandTestUtil.SENIORITY_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.STUDENT_ID_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_APPLICATION_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COURSE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_NOT_SCHEDULED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -57,8 +56,8 @@ public class AddCommandParserTest {
                 new AddCommand(expectedCandidate));
 
         // multiple names - last name accepted
-        assertParseSuccess(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+        assertParseSuccess(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
                 new AddCommand(expectedCandidate));
 
         // multiple phones - last phone accepted
@@ -76,69 +75,71 @@ public class AddCommandParserTest {
                 + COURSE_DESC_BOB + SENIORITY_DESC_BOB, expectedMessage);
 
         // missing name prefix
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB, expectedMessage);
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + VALID_NAME_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB, expectedMessage);
 
         // missing phone prefix
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + VALID_PHONE_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB, expectedMessage);
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + VALID_PHONE_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB, expectedMessage);
 
         // missing email prefix
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + VALID_EMAIL_BOB
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
                 + COURSE_DESC_BOB + SENIORITY_DESC_BOB, expectedMessage);
 
         // missing address prefix
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + VALID_COURSE_BOB + SENIORITY_DESC_BOB, expectedMessage);
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + VALID_COURSE_BOB + SENIORITY_DESC_BOB, expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + VALID_NAME_BOB + VALID_PHONE_BOB + EMAIL_DESC_BOB
-                + VALID_COURSE_BOB + SENIORITY_DESC_BOB, expectedMessage);
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + VALID_NAME_BOB + VALID_PHONE_BOB
+                + EMAIL_DESC_BOB + VALID_COURSE_BOB + SENIORITY_DESC_BOB, expectedMessage);
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid studentId
-        assertParseFailure(parser, INVALID_STUDENT_ID_DESC + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+        assertParseFailure(parser, INVALID_STUDENT_ID_DESC + NAME_DESC_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
                 StudentId.MESSAGE_CONSTRAINTS);
 
         // invalid name
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + INVALID_NAME_DESC + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
                 Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + INVALID_PHONE_DESC + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + INVALID_PHONE_DESC
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
                 Phone.MESSAGE_CONSTRAINTS);
 
         // invalid email
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_EMAIL_DESC
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB, Email.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
+                + INVALID_EMAIL_DESC + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+                Email.MESSAGE_CONSTRAINTS);
 
         // invalid course
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + INVALID_COURSE_DESC + SENIORITY_DESC_BOB
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + INVALID_COURSE_DESC + SENIORITY_DESC_BOB
                 + AVAILABILITY_DESC_BOB, Course.MESSAGE_CONSTRAINTS);
 
         // invalid seniority
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + INVALID_SENIORITY_DESC
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + INVALID_SENIORITY_DESC
                 + AVAILABILITY_DESC_BOB, Seniority.MESSAGE_CONSTRAINTS);
 
         // invalid availability
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + INVALID_AVAILABILITY_DESC,
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB + INVALID_AVAILABILITY_DESC,
                 Availability.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
-        assertParseFailure(parser, STUDENT_ID_DESC_BOB + INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + INVALID_COURSE_DESC + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, STUDENT_ID_DESC_BOB + INVALID_NAME_DESC + PHONE_DESC_BOB
+                + EMAIL_DESC_BOB + INVALID_COURSE_DESC + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+                Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + STUDENT_ID_DESC_BOB + NAME_DESC_BOB
-                + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
+                + EMAIL_DESC_BOB + COURSE_DESC_BOB + SENIORITY_DESC_BOB + AVAILABILITY_DESC_BOB,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
