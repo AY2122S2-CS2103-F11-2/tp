@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalInterviews.getTypicalInterviewSchedu
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.InterviewSchedule;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -24,6 +25,11 @@ public class AddCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), getTypicalInterviewSchedule(), new UserPrefs());
+    }
+
+    @BeforeEach
+    public void setUpDeletedInterviewListModel() {
+        model = new ModelManager(getTypicalAddressBook(), new InterviewSchedule(), new UserPrefs(), true);
     }
 
     @Test

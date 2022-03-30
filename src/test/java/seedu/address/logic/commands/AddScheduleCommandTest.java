@@ -39,6 +39,8 @@ import seedu.address.testutil.InterviewBuilder;
 
 public class AddScheduleCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new InterviewSchedule(), new UserPrefs());
+    private Model deletedListModel =
+            new ModelManager(getTypicalAddressBook(), new InterviewSchedule(), new UserPrefs(), true);
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -59,6 +61,27 @@ public class AddScheduleCommandTest {
         expectedModel.addInterview(toAdd);
 
         assertCommandSuccess(addScheduleCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_validIndexUnfilteredListOnDeletedListModel_success() {
+        Candidate candidateToInterview = deletedListModel.getFilteredCandidateList().get(INDEX_FIRST_CANDIDATE.getZeroBased());
+        LocalDateTime interviewDateTime = TUESDAY_INTERVIEW_DATE_TIME;
+        AddScheduleCommand addScheduleCommand = new AddScheduleCommand(INDEX_FIRST_CANDIDATE, interviewDateTime);
+        deletedListModel.setCandidate(candidateToInterview, candidateToInterview.triggerInterviewStatusScheduled());
+        candidateToInterview = candidateToInterview.triggerInterviewStatusScheduled();
+        Interview toAdd = new Interview(candidateToInterview, interviewDateTime);
+
+        String expectedMessage = String.format(AddScheduleCommand.MESSAGE_SCHEDULED_CANDIDATE_SUCCESS,
+                toAdd.getCandidate().getName(), toAdd.getCandidate().getStudentId(),
+                toAdd.getInterviewDate(), toAdd.getInterviewStartTime());
+
+        ModelManager expectedModel = new ModelManager(deletedListModel.getAddressBook(),
+                deletedListModel.getInterviewSchedule(), new UserPrefs(), true);
+
+        expectedModel.addInterview(toAdd);
+
+        assertCommandSuccess(addScheduleCommand, deletedListModel, expectedMessage, expectedModel);
     }
 
     @Test
@@ -91,6 +114,31 @@ public class AddScheduleCommandTest {
         showCandidateAtIndex(expectedModel, INDEX_FIRST_CANDIDATE);
         expectedModel.addInterview(toAdd);
         assertCommandSuccess(addScheduleCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_validIndexFilteredListOnDeletedList_success() {
+        showCandidateAtIndex(deletedListModel, INDEX_FIRST_CANDIDATE);
+        AddScheduleCommand addScheduleCommand =
+                new AddScheduleCommand(INDEX_FIRST_CANDIDATE, TUESDAY_INTERVIEW_DATE_TIME);
+
+        Candidate candidateToInterview =
+                deletedListModel.getFilteredCandidateList().get(INDEX_FIRST_CANDIDATE.getZeroBased());
+        LocalDateTime interviewDateTime = TUESDAY_INTERVIEW_DATE_TIME;
+        deletedListModel.setCandidate(candidateToInterview, candidateToInterview.triggerInterviewStatusScheduled());
+
+        String expectedMessage = String.format(AddScheduleCommand.MESSAGE_SCHEDULED_CANDIDATE_SUCCESS,
+                candidateToInterview.getName(), candidateToInterview.getStudentId(),
+                interviewDateTime.toLocalDate(), interviewDateTime.toLocalTime());
+
+        Interview toAdd = new Interview(candidateToInterview, interviewDateTime);
+
+        ModelManager expectedModel = new ModelManager(deletedListModel.getAddressBook(),
+                new InterviewSchedule(), new UserPrefs(), true);
+
+        showCandidateAtIndex(expectedModel, INDEX_FIRST_CANDIDATE);
+        expectedModel.addInterview(toAdd);
+        assertCommandSuccess(addScheduleCommand, deletedListModel, expectedMessage, expectedModel);
     }
 
     @Test

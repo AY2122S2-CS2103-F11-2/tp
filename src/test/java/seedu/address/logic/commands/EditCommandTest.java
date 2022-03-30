@@ -38,6 +38,8 @@ import seedu.address.testutil.EditCandidateDescriptorBuilder;
 public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), getTypicalInterviewSchedule(), new UserPrefs());
+    private Model deletedListModel =
+            new ModelManager(getTypicalAddressBook(), new InterviewSchedule(), new UserPrefs(), true);
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -52,6 +54,21 @@ public class EditCommandTest {
         expectedModel.setCandidate(model.getFilteredCandidateList().get(0), editedCandidate);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_allFieldsSpecifiedUnfilteredListDeletedListModel_success() {
+        Candidate editedCandidate = new CandidateBuilder().build();
+        EditCandidateDescriptor descriptor = new EditCandidateDescriptorBuilder(editedCandidate).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_CANDIDATE, descriptor);
+
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_CANDIDATE_SUCCESS, editedCandidate);
+
+        Model expectedModel = new ModelManager(new AddressBook(deletedListModel.getAddressBook()),
+                new InterviewSchedule(deletedListModel.getInterviewSchedule()), new UserPrefs(), true);
+        expectedModel.setCandidate(deletedListModel.getFilteredCandidateList().get(0), editedCandidate);
+
+        assertCommandSuccess(editCommand, deletedListModel, expectedMessage, expectedModel);
     }
 
     @Test
@@ -73,6 +90,27 @@ public class EditCommandTest {
         expectedModel.setCandidate(lastCandidate, editedCandidate);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_someFieldsSpecifiedUnfilteredListDeletedListModel_success() {
+        Index indexLastCandidate = Index.fromOneBased(deletedListModel.getFilteredCandidateList().size());
+        Candidate lastCandidate = deletedListModel.getFilteredCandidateList().get(indexLastCandidate.getZeroBased());
+
+        CandidateBuilder candidateInList = new CandidateBuilder(lastCandidate);
+        Candidate editedCandidate = candidateInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB).build();
+
+        EditCandidateDescriptor descriptor = new EditCandidateDescriptorBuilder().withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB).build();
+        EditCommand editCommand = new EditCommand(indexLastCandidate, descriptor);
+
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_CANDIDATE_SUCCESS, editedCandidate);
+
+        Model expectedModel = new ModelManager(new AddressBook(deletedListModel.getAddressBook()),
+                new InterviewSchedule(deletedListModel.getInterviewSchedule()), new UserPrefs(), true);
+        expectedModel.setCandidate(lastCandidate, editedCandidate);
+
+        assertCommandSuccess(editCommand, deletedListModel, expectedMessage, expectedModel);
     }
 
     @Test
