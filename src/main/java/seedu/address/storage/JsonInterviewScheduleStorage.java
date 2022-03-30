@@ -45,14 +45,14 @@ public class JsonInterviewScheduleStorage implements InterviewScheduleStorage {
     public Optional<ReadOnlyInterviewSchedule> readInterviewSchedule(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableInterviewSchedule> jsonInterviewList = JsonUtil.readJsonFile(
+        Optional<JsonSerializableInterviewSchedule> jsonInterviewSchedule = JsonUtil.readJsonFile(
                 filePath, JsonSerializableInterviewSchedule.class);
-        if (!jsonInterviewList.isPresent()) {
+        if (!jsonInterviewSchedule.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonInterviewList.get().toModelType());
+            return Optional.of(jsonInterviewSchedule.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);

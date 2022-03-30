@@ -83,23 +83,23 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
-        Optional<ReadOnlyInterviewSchedule> interviewListOptional;
+        Optional<ReadOnlyInterviewSchedule> interviewScheduleOptional;
         ReadOnlyInterviewSchedule initialInterviewSchedule;
         boolean isDeletedInterviewList = false;
 
         try {
             addressBookOptional = storage.readAddressBook();
-            interviewListOptional = storage.readInterviewSchedule();
+            interviewScheduleOptional = storage.readInterviewSchedule();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file for candidates not found. Will be starting with a sample TalentAssistant "
                         + "with an empty InterviewSchedule");
                 initialInterviewSchedule = SampleDataUtil.getEmptyInterviewList();
             } else {
-                if (!interviewListOptional.isPresent()) {
+                if (!interviewScheduleOptional.isPresent()) {
                     logger.info("Data file for interviews not found. Will be starting with an empty InterviewSchedule");
                     isDeletedInterviewList = true;
                 }
-                initialInterviewSchedule = interviewListOptional.orElseGet(SampleDataUtil::getEmptyInterviewList);
+                initialInterviewSchedule = interviewScheduleOptional.orElseGet(SampleDataUtil::getEmptyInterviewList);
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
