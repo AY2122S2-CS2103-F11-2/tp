@@ -4,12 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CANDIDATES;
+import static seedu.address.model.candidate.InterviewStatus.NOT_SCHEDULED;
+import static seedu.address.model.candidate.InterviewStatus.SCHEDULED;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalCandidates.ALICE;
 import static seedu.address.testutil.TypicalCandidates.BENSON;
 import static seedu.address.testutil.TypicalCandidates.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalInterviews.INTERVIEW_ALICE;
 import static seedu.address.testutil.TypicalInterviews.INTERVIEW_BENSON;
+import static seedu.address.testutil.TypicalInterviews.getTypicalInterviewSchedule;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,10 +23,12 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.candidate.Candidate;
 import seedu.address.model.candidate.predicate.NameContainsKeywordsPredicate;
 import seedu.address.model.interview.Interview;
 import seedu.address.model.interview.predicate.AllWithinTimePeriodPredicate;
 import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.CandidateBuilder;
 import seedu.address.testutil.InterviewScheduleBuilder;
 
 public class ModelManagerTest {
@@ -36,6 +41,12 @@ public class ModelManagerTest {
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
         assertEquals(new InterviewSchedule(), new InterviewSchedule(modelManager.getInterviewSchedule()));
+    }
+
+    @Test
+    public void constructorIsDeletedInterviewList_notEmptyInterviewSchedule_throwsAssertionError() {
+        assertThrows(AssertionError.class, () ->
+                new ModelManager(getTypicalAddressBook(), getTypicalInterviewSchedule(), new UserPrefs(), true));
     }
 
     @Test
@@ -102,7 +113,6 @@ public class ModelManagerTest {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredCandidateList().remove(0));
     }
 
-    //=======TODO======
     @Test
     public void setInterviewScheduleFilePath_nullPath_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.setInterviewScheduleFilePath(null));
@@ -163,7 +173,6 @@ public class ModelManagerTest {
         assertEquals(notSorted, sorted);
     }
 
-    /*
     @Test
     public void deleteInterviewSuccess() {
         AddressBook addressBook = new AddressBookBuilder().withCandidate(ALICE).build();
@@ -176,7 +185,7 @@ public class ModelManagerTest {
         modelManager.deleteInterviewForCandidate(ALICE);
 
         assertEquals(modelManager, modelManagerCopy);
-    }*/
+    }
 
     @Test
     public void deleteCandidate_withNoInterviewScheduled() {
@@ -245,6 +254,36 @@ public class ModelManagerTest {
                 pastInterview.getCandidate().triggerInterviewStatusCompleted());
 
         assertEquals(modelManager, modelManagerCopy);
+    }
+
+    @Test
+    public void deleteCandidate_withNoInterviewScheduled_isDeletedInterviewList() {
+        AddressBook addressBook = new AddressBookBuilder().withCandidate(ALICE).withCandidate(BENSON).build();
+        InterviewSchedule emptyInterviewSchedule = new InterviewScheduleBuilder().build();
+        UserPrefs userPrefs = new UserPrefs();
+
+        modelManager = new ModelManager(addressBook, emptyInterviewSchedule, userPrefs, true);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, emptyInterviewSchedule, userPrefs, true);
+        modelManager.deleteInterviewForCandidate(ALICE);
+
+        assertEquals(modelManager, modelManagerCopy);
+
+    }
+
+    @Test
+    public void candidatesNotScheduled_onStart_isDeletedInterviewList() {
+        Candidate aliceScheduled = new CandidateBuilder(ALICE).withInterviewStatus(SCHEDULED).build();
+        Candidate aliceNotScheduled = new CandidateBuilder(ALICE).withInterviewStatus(NOT_SCHEDULED).build();
+        AddressBook addressBook1 = new AddressBookBuilder().withCandidate(aliceScheduled).build();
+        AddressBook addressBook2 = new AddressBookBuilder().withCandidate(aliceNotScheduled).build();
+        InterviewSchedule emptyInterviewSchedule = new InterviewScheduleBuilder().build();
+        UserPrefs userPrefs = new UserPrefs();
+
+        modelManager = new ModelManager(addressBook1, emptyInterviewSchedule, userPrefs, true);
+        ModelManager modelManagerCopy = new ModelManager(addressBook2, emptyInterviewSchedule, userPrefs);
+
+        assertEquals(modelManager, modelManagerCopy);
+
     }
 
     @Test
