@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.model.InterviewSchedule;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -27,8 +26,6 @@ import seedu.address.model.candidate.Candidate;
 public class DeleteCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), getTypicalInterviewSchedule(), new UserPrefs());
-    private Model deletedListModel =
-            new ModelManager(getTypicalAddressBook(), new InterviewSchedule(), new UserPrefs(), true);
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -44,23 +41,6 @@ public class DeleteCommandTest {
         expectedModel.deleteInterviewForCandidate(candidateToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void execute_validIndexUnfilteredListDeletedListModel_success() {
-        Candidate candidateToDelete =
-                deletedListModel.getFilteredCandidateList().get(INDEX_FIRST_CANDIDATE.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_CANDIDATE);
-
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_CANDIDATE_SUCCESS, candidateToDelete);
-
-        ModelManager expectedModel = new ModelManager(deletedListModel.getAddressBook(),
-                deletedListModel.getInterviewSchedule(), new UserPrefs());
-
-        expectedModel.deleteCandidate(candidateToDelete);
-        expectedModel.deleteInterviewForCandidate(candidateToDelete);
-
-        assertCommandSuccess(deleteCommand, deletedListModel, expectedMessage, expectedModel);
     }
 
     @Test
@@ -87,26 +67,6 @@ public class DeleteCommandTest {
         showNoCandidate(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void execute_validIndexFilteredListDeletedListModel_success() {
-        showCandidateAtIndex(deletedListModel, INDEX_FIRST_CANDIDATE);
-
-        Candidate candidateToDelete =
-                deletedListModel.getFilteredCandidateList().get(INDEX_FIRST_CANDIDATE.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_CANDIDATE);
-
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_CANDIDATE_SUCCESS, candidateToDelete);
-
-        Model expectedModel = new ModelManager(deletedListModel.getAddressBook(),
-                deletedListModel.getInterviewSchedule(), new UserPrefs());
-
-        expectedModel.deleteInterviewForCandidate(candidateToDelete);
-        expectedModel.deleteCandidate(candidateToDelete);
-        showNoCandidate(expectedModel);
-
-        assertCommandSuccess(deleteCommand, deletedListModel, expectedMessage, expectedModel);
     }
 
     @Test
