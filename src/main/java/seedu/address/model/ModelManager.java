@@ -17,7 +17,6 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.candidate.Candidate;
 import seedu.address.model.interview.Interview;
-import seedu.address.model.util.SampleDataUtil;
 
 
 /**
@@ -57,8 +56,7 @@ public class ModelManager implements Model {
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInterviewSchedule interviewList,
                         ReadOnlyUserPrefs userPrefs, boolean isDeletedInterviewList) {
-        requireAllNonNull(addressBook, interviewList, userPrefs, isDeletedInterviewList);
-        assert (interviewList.equals(SampleDataUtil.getEmptyInterviewList()));
+        requireAllNonNull(addressBook, interviewList, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + ", InterviewSchedule: " + interviewList
                 + " and user prefs " + userPrefs);
