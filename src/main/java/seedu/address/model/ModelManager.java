@@ -33,7 +33,7 @@ public class ModelManager implements Model {
 
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given addressBook, interviewSchedule and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInterviewSchedule interviewList,
                         ReadOnlyUserPrefs userPrefs) {
@@ -50,6 +50,10 @@ public class ModelManager implements Model {
         filteredInterviewSchedule = new FilteredList<>(this.interviewSchedule.getInterviewList());
     }
 
+    /**
+     * Initializes a ModelManager with the given addressBook, interviewSchedule and userPrefs but
+     * resets the interviewStatus of all candidates to not scheduled.
+     */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInterviewSchedule interviewList,
                         ReadOnlyUserPrefs userPrefs, boolean isDeletedInterviewList) {
         requireAllNonNull(addressBook, interviewList, userPrefs);
