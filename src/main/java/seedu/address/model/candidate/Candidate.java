@@ -21,7 +21,7 @@ public class Candidate {
     private final Course course;
     private final Seniority seniority;
     private final ApplicationStatus applicationStatus;
-    private final InterviewStatus interviewStatus;
+    private InterviewStatus interviewStatus;
     private final Availability availability;
 
     /**
@@ -210,4 +210,18 @@ public class Candidate {
         return interviewStatus.equals(new InterviewStatus(COMPLETED));
     }
 
+    public Candidate setInterviewStatusNotScheduled() {
+        requireAllNonNull(name, phone, email, course, seniority,
+                applicationStatus, interviewStatus, availability);
+        return new Candidate(this.getStudentId(),
+                this.getName(),
+                this.getPhone(),
+                this.getEmail(),
+                this.getCourse(),
+                this.getSeniority(),
+                this.getApplicationStatus(),
+                new InterviewStatus(NOT_SCHEDULED),
+                this.getAvailability()
+        );
+    }
 }

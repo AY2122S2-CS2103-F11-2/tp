@@ -131,4 +131,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return candidates.hashCode();
     }
+
+    public void resetAllInterviewStatus() {
+        candidates.resetAllInterviewStatus();
+    }
 }

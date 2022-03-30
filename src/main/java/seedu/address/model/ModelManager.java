@@ -50,6 +50,22 @@ public class ModelManager implements Model {
         filteredInterviewSchedule = new FilteredList<>(this.interviewSchedule.getInterviewList());
     }
 
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInterviewSchedule interviewList,
+                        ReadOnlyUserPrefs userPrefs, boolean isDeletedInterviewList) {
+        requireAllNonNull(addressBook, interviewList, userPrefs);
+
+        logger.fine("Initializing with address book: " + addressBook + ", InterviewSchedule: " + interviewList
+                + " and user prefs " + userPrefs);
+
+        this.addressBook = new AddressBook(addressBook);
+        this.addressBook.resetAllInterviewStatus();
+        this.userPrefs = new UserPrefs(userPrefs);
+
+        this.interviewSchedule = new InterviewSchedule(interviewList);
+        filteredCandidates = new FilteredList<>(this.addressBook.getCandidateList());
+        filteredInterviewSchedule = new FilteredList<>(this.interviewSchedule.getInterviewList());
+    }
+
     public ModelManager() {
         this(new AddressBook(), new InterviewSchedule(), new UserPrefs());
     }
