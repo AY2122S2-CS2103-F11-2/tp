@@ -57,6 +57,10 @@ faster than traditional GUI applications.
 
 **:information_source: Notes about GUI display layout:**<br>
 
+* **CommandBox Input** : Top panel for user to type in commands. 
+
+* **Feedback Panel** : Middle panel to show the feedback message after execution of command. 
+
 * **Candidates List** : Bottom leftmost panel displays the list of candidates in the system, alongside some key information.
 
 * **Candidate Profile** : Bottom middle panel brings up a focused view of the candidate's profile when the related `focus` command is entered.
@@ -67,7 +71,7 @@ Features relating to the display of information within these panels are describe
 
 </div>
 
-// TODO: Add illustrated (with shapes and text) of GUI
+![Ui](images/DetailedUi.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
