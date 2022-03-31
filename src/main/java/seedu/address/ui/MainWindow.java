@@ -331,7 +331,7 @@ public class MainWindow extends UiPart<Stage> {
             } else if (commandText.contains(DeleteCommand.COMMAND_WORD)) {
                 handleDelete(commandText);
             } else if (commandText.contains(EditCommand.COMMAND_WORD)) {
-                clearFocusCard();
+                //do nothing (for future implementation)
             } else if (commandText.contains(AddScheduleCommand.COMMAND_WORD)) {
                 editFlag = handleEdit(commandText, ADD_SCHEDULE_COMMAND_INDEX);
             } else if (commandText.contains(ClearScheduleCommand.COMMAND_WORD)) {

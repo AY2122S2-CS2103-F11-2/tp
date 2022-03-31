@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SENIORITY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CANDIDATES;
 
+import java.io.FileReader;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,9 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
+    public static final String REFRESH_MESSAGE = "Note: If user is being shown on the middle panel, refresh "
+            + "the candidate's information by using the Focus Command.";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the candidate identified "
             + "by the index number used in the displayed candidate list. "
             + "Existing values will be overwritten by the input values.\n"
@@ -53,7 +57,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_AVAILABILITY + "AVAILABILITY]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "E0123456@u.nus.edu";
+            + PREFIX_EMAIL + "E0123456@u.nus.edu\n"
+            + REFRESH_MESSAGE;
 
     public static final String MESSAGE_EDIT_CANDIDATE_SUCCESS = "Edited Candidate: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided";
@@ -110,7 +115,9 @@ public class EditCommand extends Command {
         }
 
         model.updateFilteredCandidateList(PREDICATE_SHOW_ALL_CANDIDATES);
-        return new CommandResult(String.format(MESSAGE_EDIT_CANDIDATE_SUCCESS, editedCandidate));
+
+        return new CommandResult(String.format(MESSAGE_EDIT_CANDIDATE_SUCCESS,
+                editedCandidate + "\n" + REFRESH_MESSAGE));
     }
 
     /**
