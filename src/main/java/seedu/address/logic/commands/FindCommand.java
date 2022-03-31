@@ -17,16 +17,18 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all candidates whose description contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "The search will be conducted only on a specific field in candidates' description by specifying the "
-            + PREFIX_FIELD + "FIELD argument.\n"
-            + "Parameters: " + PREFIX_KEYWORD + "KEYWORD [" + PREFIX_KEYWORD + "MORE_KEYWORDS]... "
-            + PREFIX_FIELD + "FIELD\n"
+    public static final String INVALID_ATTRIBUTE_FIELD = "The provided attribute field to search by is invalid! \n"
+            + "Note: Searchable attribute fields include `appstatus`, `avail`, `all`, `course`, `email`, "
+            + "`intstatus`, `name`, `phone`, `remark`, `seniority`, `studentid`.";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all candidates containing any of "
+            + "the specified keywords (case-insensitive) in the specified attribute field.\n"
+            + "Parameters: " + PREFIX_KEYWORD + "KEYWORD [" + PREFIX_KEYWORD + "MORE_KEYWORDS]... ["
+            + PREFIX_FIELD + "ATTRIBUTE_FIELD]\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_KEYWORD + "alice " + PREFIX_KEYWORD + "charlie "
             + PREFIX_FIELD + "name\n"
-            + "Allowable fields to be searched include: applicationstatus, availability, candidate, course, email, "
-            + "interviewstatus, name, phone, remark, seniority, studentid.";
+            + "Note: Searchable attribute fields include `appstatus`, `avail`, `all`, `course`, `email`, "
+            + "`intstatus`, `name`, `phone`, `remark`, `seniority`, `studentid`.";
 
     private final ContainsKeywordsPredicate predicate;
 

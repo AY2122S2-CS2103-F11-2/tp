@@ -17,8 +17,12 @@ public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all currently displayed candidates "
-            + "by the field specified in ascending order (A-Z, 0-9).\n"
+    public static final String INVALID_ATTRIBUTE_FIELD = "The provided attribute field to sort by is invalid!\n"
+            + "Note: Allowable fields for sorting include `appstatus`, `course`, "
+            + "`intstatus`, `name`, `seniority`, `studentid`.";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all displayed candidates "
+            + "by the attribute field specified in ascending order (A-Z, 0-9).\n"
             + "Parameters: " + PREFIX_SORTKEY + "ATTRIBUTE_FIELD \n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_SORTKEY + "name\n"
             + "Note: Allowable fields for sorting include `appstatus`, `course`, "

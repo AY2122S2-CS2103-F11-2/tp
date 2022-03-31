@@ -20,8 +20,10 @@ public class DeleteScheduleCommand extends ScheduleCommand {
     public static final String COMMAND_WORD = ScheduleCommand.COMMAND_WORD + " delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the interview identified by the index number in the interview schedule.\n"
-            + "Example: " + COMMAND_WORD + " 3";
+            + ": Deletes the interview identified by the index number in the displayed interview schedule.\n"
+            + "Parameters: INTERVIEW_INDEX\n"
+            + "Example: " + COMMAND_WORD + " 1\n"
+            + "Note: The interview index number must be a valid non zero positive integer.";
 
     public static final String MESSAGE_DELETE_INTERVIEW_SUCCESS =
             "Successfully deleted interview for %1$s";

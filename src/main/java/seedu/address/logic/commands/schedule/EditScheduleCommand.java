@@ -26,7 +26,9 @@ public class EditScheduleCommand extends ScheduleCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the interview identified by the index number in the interview schedule "
             + "to the proposed date and time.\n"
-            + "Example: " + COMMAND_WORD + " 3 at/20-03-2023 10:00";
+            + "Parameters: INTERVIEW_INDEX at/DATE_TIME (in dd-MM-yyyy HH:mm format)\n"
+            + "Example: " + COMMAND_WORD + " 3 at/20-03-2023 10:00\n"
+            + "Note: The interview index number must be a valid non zero positive integer.";
 
     public static final String MESSAGE_EDIT_INTERVIEW_SUCCESS =
             "Successfully edited interview for %1$s";

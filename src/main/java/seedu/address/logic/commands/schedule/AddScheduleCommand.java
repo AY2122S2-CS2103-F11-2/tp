@@ -24,7 +24,8 @@ public class AddScheduleCommand extends ScheduleCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Schedules the candidate identified by the index number for an interview on given date and time.\n"
             + "Parameters: candidate/CANDIDATE_INDEX at/DATE_TIME (in dd-MM-yyyy HH:mm format)\n"
-            + "Example: " + COMMAND_WORD + " candidate/1 at/ 23-09-2022 13:30";
+            + "Example: " + COMMAND_WORD + " candidate/1 at/23-09-2022 13:30\n"
+            + "Note: The candidate's index number must be a valid non zero positive integer.";
 
     public static final String MESSAGE_SCHEDULED_CANDIDATE_SUCCESS =
             "Successfully scheduled %1$s %2$s for interview on %3$s %4$s";

@@ -4,7 +4,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FIELD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_KEYWORD;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -14,6 +13,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.candidate.predicate.ApplicationStatusContainsKeywordsPredicate;
 import seedu.address.model.candidate.predicate.AvailabilityContainsKeywordsPredicate;
 import seedu.address.model.candidate.predicate.CandidateContainsKeywordsPredicate;
+import seedu.address.model.candidate.predicate.ContainsKeywordsPredicate;
 import seedu.address.model.candidate.predicate.CourseContainsKeywordsPredicate;
 import seedu.address.model.candidate.predicate.EmailContainsKeywordsPredicate;
 import seedu.address.model.candidate.predicate.InterviewStatusContainsKeywordsPredicate;
@@ -53,33 +53,49 @@ public class FindCommandParser implements Parser<FindCommand> {
             fieldString = field.get().toLowerCase();
         }
 
+        ContainsKeywordsPredicate predicate;
+
         switch (fieldString) {
         case "appstatus":
-            return new FindCommand(new ApplicationStatusContainsKeywordsPredicate(keywords));
+            predicate = new ApplicationStatusContainsKeywordsPredicate(keywords);
+            break;
         case "avail":
-            return new FindCommand(new AvailabilityContainsKeywordsPredicate(keywords));
+            predicate = new AvailabilityContainsKeywordsPredicate(keywords);
+            break;
         case "all":
         case "":
-            return new FindCommand(new CandidateContainsKeywordsPredicate(keywords));
+            predicate = new CandidateContainsKeywordsPredicate(keywords);
+            break;
         case "course":
-            return new FindCommand(new CourseContainsKeywordsPredicate(keywords));
+            predicate = new CourseContainsKeywordsPredicate(keywords);
+            break;
         case "email":
-            return new FindCommand(new EmailContainsKeywordsPredicate(keywords));
+            predicate = new EmailContainsKeywordsPredicate(keywords);
+            break;
         case "intstatus":
-            return new FindCommand(new InterviewStatusContainsKeywordsPredicate(keywords));
+            predicate = new InterviewStatusContainsKeywordsPredicate(keywords);
+            break;
         case "name":
-            return new FindCommand(new NameContainsKeywordsPredicate(keywords));
+            predicate = new NameContainsKeywordsPredicate(keywords);
+            break;
         case "phone":
-            return new FindCommand(new PhoneContainsKeywordsPredicate(keywords));
+            predicate = new PhoneContainsKeywordsPredicate(keywords);
+            break;
         case "remark":
-            return new FindCommand(new RemarkContainsKeywordsPredicate(keywords));
+            predicate = new RemarkContainsKeywordsPredicate(keywords);
+            break;
         case "seniority":
-            return new FindCommand(new SeniorityContainsKeywordsPredicate(keywords));
+            predicate = new SeniorityContainsKeywordsPredicate(keywords);
+            break;
         case "studentid":
-            return new FindCommand(new StudentIdContainsKeywordsPredicate(keywords));
+            predicate = new StudentIdContainsKeywordsPredicate(keywords);
+            break;
         default:
-            return new FindCommand(new CandidateContainsKeywordsPredicate(Collections.<String>emptyList()));
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.INVALID_ATTRIBUTE_FIELD));
         }
+
+        return new FindCommand(predicate);
     }
 
     /**

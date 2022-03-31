@@ -7,8 +7,8 @@ public abstract class ScheduleCommand extends Command {
 
     public static final String MESSAGE_USAGE = "The following formats are supported for " + COMMAND_WORD + ":\n"
             + COMMAND_WORD + " add candidate/INDEX at/DATE_TIME \n"
-            + COMMAND_WORD + " edit SCHEDULE_INDEX at/DATE_TIME \n"
-            + COMMAND_WORD + " delete SCHEDULE_INDEX \n"
+            + COMMAND_WORD + " edit INTERVIEW_INDEX at/DATE_TIME \n"
+            + COMMAND_WORD + " delete INTERVIEW_INDEX \n"
             + COMMAND_WORD + " clear";
 
     public static final String MESSAGE_DUPLICATE_CANDIDATE_INTERVIEW =

@@ -20,16 +20,15 @@ public class RemarkCommand extends Command {
 
     public static final String COMMAND_WORD = "remark";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the remark of the candidate identified "
-            + "by the index number used in the last candidate listing. "
-            + "Existing remark will be overwritten by the input.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_REMARK + "[REMARK]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_REMARK + "Likes to swim.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the remark of the candidate identified "
+            + "by the index number used in the displayed candidates list. "
+            + "Parameters: INDEX " + PREFIX_REMARK + "[REMARK]\n"
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_REMARK + "Is a good candidate.\n"
+            + "Note: The candidate index number must be a valid non zero positive integer. Candidate's existing "
+            + "remark will be overwritten.\n";
 
-    public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Candidate: %1$s";
-    public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Candidate: %1$s";
+    public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Candidate: \n %1$s";
+    public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Candidate: \n %1$s";
 
     private final Index index;
     private final Remark remark;

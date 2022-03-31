@@ -15,10 +15,10 @@ import seedu.address.model.candidate.Candidate;
 public class FocusCommand extends Command {
 
     public static final String MESSAGE_FOCUS_CANDIDATE = "Details of candidate shown";
-    public static final String MESSAGE_USAGE = "focus: Bring up a Candidate's information into the middle panel.\n"
+    public static final String MESSAGE_USAGE = "focus: Brings up a candidate's information into the middle panel.\n"
             + "Parameters: INDEX\n"
             + "Example: focus 1\n"
-            + "Note: The index provided must be within the range of the Candidates available in the system.";
+            + "Note: The candidate index number must be a valid non zero positive integer.";
     public static final String COMMAND_WORD = "focus";
     private final Index targetIndex;
 

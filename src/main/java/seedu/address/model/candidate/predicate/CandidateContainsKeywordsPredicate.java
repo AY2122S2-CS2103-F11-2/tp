@@ -1,13 +1,10 @@
 package seedu.address.model.candidate.predicate;
 
-import static seedu.address.model.candidate.predicate.AvailabilityContainsKeywordsPredicate.DAYS_IN_FULL;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.model.candidate.Candidate;
 
 /**
@@ -42,14 +39,14 @@ public class CandidateContainsKeywordsPredicate extends ContainsKeywordsPredicat
         }
 
         return keywords.stream().anyMatch(keyword ->
-                StringUtil.containsStringIgnoreCase(candidate.getApplicationStatus().toString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getCourse().toString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getEmail().toString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getInterviewStatus().toString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getName().toString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getPhone().toString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getSeniority().toSearchString(), keyword)
-                        || StringUtil.containsStringIgnoreCase(candidate.getStudentId().toString(), keyword)
+                candidate.getApplicationStatus().toString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getCourse().toString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getEmail().toString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getInterviewStatus().toString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getName().toString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getPhone().toString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getSeniority().toSearchString().toLowerCase().contains(keyword.toLowerCase())
+                        || candidate.getStudentId().toString().toLowerCase().contains(keyword.toLowerCase())
                         || availMap.containsKey(keyword.toUpperCase()));
     }
 

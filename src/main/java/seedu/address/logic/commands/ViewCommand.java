@@ -15,12 +15,11 @@ public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": View all scheduled interviews in the system"
-            + " scheduled within a specified time period.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Displays all interviews in the system"
+            + " scheduled within the specified time period.\n"
             + "Parameters: TIME_PERIOD\n"
             + "Example: " + COMMAND_WORD + " today\n"
-            + "Note: Allowable time periods include `all` (i.e. all scheduled interviews in the system),"
-            + " `today` (i.e. same day), `week` (i.e. next 7 days), month (i.e. period till the next month).";
+            + "Note: Allowable time periods include `all`, `today`, `week`, `month`.";
 
     private final WithinTimePeriodPredicate predicate;
 

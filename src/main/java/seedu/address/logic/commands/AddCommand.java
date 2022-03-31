@@ -20,8 +20,8 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a candidate to the address book.\n"
-            + "Parameters: ID, NAME, PHONE, EMAIL, COURSE, SENIORITY, AVAILABILITY\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a candidate to the system.\n"
+            + "Parameters: id/ID, n/NAME, p/PHONE, e/EMAIL, c/COURSE, yr/SENIORITY, avail/AVAILABILITY\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ID + "A0123456B "
             + PREFIX_NAME + "John Doe "
@@ -29,7 +29,8 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "E0123456@u.nus.edu "
             + PREFIX_COURSE + "Computer Science "
             + PREFIX_SENIORITY + "2 "
-            + PREFIX_AVAILABILITY + "1,2,3,4,5";
+            + PREFIX_AVAILABILITY + "1,2,3,4,5\n"
+            + "Note: Validity checks will need to be met for certain fields. See the user guide for full details.";
 
     public static final String MESSAGE_SUCCESS = "New candidate added: %1$s";
     public static final String MESSAGE_DUPLICATE_CANDIDATE = "This candidate already exists in the system";

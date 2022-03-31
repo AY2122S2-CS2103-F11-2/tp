@@ -29,19 +29,23 @@ public class SortCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no sort key specified
-        assertParseFailure(parser, SORT_EMPTY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, SORT_EMPTY, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SortCommand.INVALID_ATTRIBUTE_FIELD));
     }
 
     @Test
     public void parse_invalidFields_failure() {
         // invalid field specified
-        assertParseFailure(parser, PREFIX_SORTKEY + "named", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, " " + PREFIX_SORTKEY + "named", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SortCommand.INVALID_ATTRIBUTE_FIELD));
 
         // multiple fields specified
-        assertParseFailure(parser, PREFIX_SORTKEY + "name course", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, " " + PREFIX_SORTKEY + "name course", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SortCommand.INVALID_ATTRIBUTE_FIELD));
 
         // no whitespace before prefix
-        assertParseFailure(parser, PREFIX_SORTKEY + "name", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, PREFIX_SORTKEY + "name", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SortCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -49,8 +53,6 @@ public class SortCommandParserTest {
         Comparator<Candidate> sortComparatorName = Comparator.comparing(l -> l.getName().toString().toLowerCase());
         Comparator<Candidate> sortComparatorCourse = Comparator.comparing(l -> l.getName().toString().toLowerCase());
         Comparator<Candidate> sortComparatorStudentId = Comparator.comparing(l -> l.getName().toString().toLowerCase());
-        Comparator<Candidate> sortComparatorPhone = Comparator.comparing(l -> l.getName().toString().toLowerCase());
-        Comparator<Candidate> sortComparatorEmail = Comparator.comparing(l -> l.getName().toString().toLowerCase());
         Comparator<Candidate> sortComparatorInterviewStatus =
                 Comparator.comparing(l -> l.getInterviewStatus().toString().toLowerCase());
         Comparator<Candidate> sortComparatorApplicationStatus =

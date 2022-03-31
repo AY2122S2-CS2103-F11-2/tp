@@ -319,6 +319,7 @@
 #cardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
+    -fx-padding: 0 0 6 0
 }
 
 #commandTypeLabel {
@@ -490,8 +491,9 @@
     -fx-padding: 0 0 0 15;
 }
 
-#focus-card-schedule-label {
+#focus-card-misc-label {
     -fx-padding: 25 0 0 15;
+    -fx-font-weight: bold;
 }
 
 #focus-card-scroll-pane {

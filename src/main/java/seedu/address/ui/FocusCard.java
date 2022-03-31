@@ -43,8 +43,10 @@ public class FocusCard extends UiPart<Region> {
 
     private static final String FXML = "FocusListCard.fxml";
     private static final String SENIORITY_VALUE = "COM";
-    private static final String SCHEDULE_MESSAGE = "Scheduled interview on:";
+    private static final String SCHEDULE_MESSAGE = "Interview scheduled:";
     private static final String NO_SCHEDULE_MESSAGE = "No interview scheduled!";
+    private static final String REMARK_MESSAGE = "Remark:";
+    private static final String NO_REMARK_MESSAGE = "No remark added!";
     private static final String EMPTY_MESSAGE = " ";
 
     private static final int OFFSET = 65;
@@ -90,7 +92,9 @@ public class FocusCard extends UiPart<Region> {
     @FXML
     private Label remark;
     @FXML
-    private Label scheduleMessage;
+    private Label interviewHeader;
+    @FXML
+    private Label remarkHeader;
     @FXML
     private FlowPane statusFocusPane;
     @FXML
@@ -113,7 +117,6 @@ public class FocusCard extends UiPart<Region> {
             email.setText(EMPTY_MESSAGE);
             course.setText(EMPTY_MESSAGE);
             remark.setText(EMPTY_MESSAGE);
-
         } else {
             this.candidate = candidate;
             this.interview = interview;
@@ -122,12 +125,12 @@ public class FocusCard extends UiPart<Region> {
             phone.setText(candidate.getPhone().value);
             email.setText(candidate.getEmail().value);
             course.setText(candidate.getCourse().course + ", " + SENIORITY_VALUE + candidate.getSeniority().seniority);
-            remark.setText("Remarks (if any): " + candidate.getRemark().value);
             setProfilePicture(candidate.getName());
             setApplicationStatus(candidate.getApplicationStatus());
             setInterviewStatus(candidate.getInterviewStatus());
             setAvailableDays(candidate.getAvailability());
             setSchedule();
+            setRemark();
         }
     }
 
@@ -229,9 +232,16 @@ public class FocusCard extends UiPart<Region> {
             day.setText(d);
             date.setText(interview.getInterviewDate().format(formatter));
             time.setText("@ " + interview.getInterviewStartTime().toString());
-            scheduleMessage.setText(SCHEDULE_MESSAGE);
         } else {
-            scheduleMessage.setText(NO_SCHEDULE_MESSAGE);
+            day.setText(NO_SCHEDULE_MESSAGE);
+        }
+    }
+
+    private void setRemark() {
+        if (candidate.getRemark().toString().length() > 0) {
+            remark.setText(candidate.getRemark().toString());
+        } else {
+            remark.setText(NO_REMARK_MESSAGE);
         }
     }
 

@@ -45,19 +45,19 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the candidate identified "
             + "by the index number used in the displayed candidate list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: INDEX "
             + "[" + PREFIX_ID + "ID] "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_COURSE + "COURSE] "
             + "[" + PREFIX_SENIORITY + "SENIORITY] "
-            + "[" + PREFIX_APPLICATION_STATUS + "APPLICATION STATUS] "
+            + "[" + PREFIX_APPLICATION_STATUS + "APPLICATION_STATUS] "
             + "[" + PREFIX_AVAILABILITY + "AVAILABILITY]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "E0123456@u.nus.edu\n"
-            + REFRESH_MESSAGE;
+            + "Note: Validity checks will need to be met for certain fields. See the user guide for full details.";
 
     public static final String MESSAGE_EDIT_CANDIDATE_SUCCESS = "Edited Candidate: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided";

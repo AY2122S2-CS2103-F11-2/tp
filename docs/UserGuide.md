@@ -13,7 +13,7 @@ If you can type fast, this application will be able to help you manage all thing
 faster than traditional GUI applications.
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -31,34 +31,23 @@ faster than traditional GUI applications.
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-    * **`list`** : Lists all candidates.
-
     * **`add id/A0123456B n/John Doe p/87654321 e/E0123456@u.nus.edu c/Computer Science yr/2 avail/1,2,3`** Adds a new candidate into the system.
-   
-    * **`edit 1 c/Computer Science yr/3 avail/1 ...`** Edits the first candidate displayed in the system.
+
+    * **`list`** : Lists all candidates.
 
     * **`delete 1`** : Deletes the first candidate displayed in the system.
 
     * **`find k/Alex f/name`** : Searches for all candidates with name containing “alex" (case-insensitive).
 
     * **`sort s/name`** : Sorts all candidates by name in ascending alphabetical order (i.e. A-Z).
-    
-    * **`view today`** : Filters all interviews to display only interviews scheduled today (if any).
-   
-    * **`remark 1 r/a good candidate`** : Adds a remark to the first candidate displayed in the system.
    
     * **`schedule add candidate/1 at/05-05-2022 10:00`** : Schedules the first candidate for an interview at 5 May 2022 10AM.
-
-    * **`schedule edit 1 at/06-06-2022 15:00`** : Reschedules the first interview in the interview schedule to 6 June 2022 3PM. Note that the index in the interview schedule is different from the candidate list.
-
-    * **`schedule delete 1`** : Deletes the first interview in the interview schedule. Note that the index in the interview schedule is different from the candidate list.
 
     * **`help`** : List all commands in the system.
    
     * **`exit`** : Closes and exits the system.
-
-
-1. Refer to the [Features](#features) below for details of all commands.
+    
+1. Refer to the [Features](#features) section below for details of all the available commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -83,7 +72,11 @@ Features relating to the display of information within these panels are describe
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
-{:toc}
+* [Viewing help](#viewing-help)
+* [Managing candidates](#managing-candidates)
+* [Scheduling interviews](#scheduling-interviews)
+* [Miscellaneous commands](#miscellaneous-commands)
+* [Processing data](#processing-data)
 
 <div markdown="block" class="alert alert-info">
 
@@ -100,6 +93,9 @@ Features relating to the display of information within these panels are describe
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+
+* Optional parameters for commands are represented with `[` and `]`.<br>
+  e.g. `[ATTRIBUTE_FIELD/VALUE]`.
 
 * The following table lists some common abbreviations used in the command prefixes or `ATTRIBUTE_FIELD`s.
 
@@ -120,15 +116,15 @@ Lists the application commands that are available in the system.
 
 Format: `help`
 
-## Managing Candidates
+## Managing candidates
 
 ### Adding a candidate: `add`
 
 Adds a candidate into the system.
 
-Format: `add id/STUDENTID n/NAME p/PHONE e/EMAIL c/COURSE yr/SENIORITY avail/AVAILABILITY`
+Format: `add id/STUDENT_ID n/NAME p/PHONE e/EMAIL c/COURSE yr/SENIORITY avail/AVAILABILITY`
 
-* `STUDENTID` is sensitive and it will be validated.
+* `STUDENT_ID` is sensitive and it will be validated.
 * `NAME` should only contain alphabets, `A-Z` or `a-z`.
 * `EMAIL` should only be in this format. i.e. `EXXXXXXX@u.nus.edu`
 * `PHONE` should only be a local number. i.e. Starting number of Singapore's common numbers - 6, 8, 9
@@ -143,19 +139,20 @@ Examples:
 
 Edits a candidate in the system.
 
-Format: `edit INDEX c/COURSE yr/YEAR [ATTRIBUTE_FIELD/VALUE]...`
+Format: `edit INDEX [PREFIX/VALUE] [MORE_PREFIX/VALUE]…​`
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the edit format:**<br>
 
-`ATTRIBUTE_FIELD` can take on the following values `id`, `name`, `email`, `phone`, `course`, `yr`, `as`, `avail`
+`PREFIX` can take on the following values `id`, `name`, `email`, `phone`, `course`, `yr`, `as`, `avail`
 
 </div>
 
 * Edits the candidate at the specified `INDEX`. The index refers to the index number shown in the displayed candidate list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* `as` prefix short for Application Status` should only be either `Pending`, `Accepted` or `Rejected`.
 
 Examples:
 * `edit 1 n/Jane Doe yr/3 avail/1` Edits the name, year and availability of the 1st candidate to be Jane Doe, Year 3, Monday only respectively.
@@ -168,12 +165,11 @@ Displays all candidates found in the system.
 
 Format: `list`
 
-
 ### Finding candidates by keyword(s) search: `find`
 
 Finds and lists candidates whose attribute field(s) contain(s) any of the given keyword(s).
 
-Format: `find k/KEYWORD [k/MORE_KEYWORDS]... [f/ATTRIBUTE_FIELD]`
+Format: `find k/KEYWORD [k/MORE_KEYWORDS]…​ [f/ATTRIBUTE_FIELD]`
 
 <div markdown="block" class="alert alert-info">
 
@@ -411,7 +407,6 @@ to your desired outcome (scheduled or not completed).
 and/or (conflicting) interviews.
 </div>
 
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -425,27 +420,27 @@ and/or (conflicting) interviews.
 
 Commands in this section have been organised based on the expected scope of behaviour.
 
-### Managing Candidates
-| Action     | Format, Examples                                                                                                                                                                               |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add id/STUDENTID n/NAME e/EMAIL p/PHONE c/COURSE yr/SENIORITY avail/AVAILABILITY`<br> e.g., `add id/A0123456B n/John Doe p/87654321 e/E0123456@u.nus.edu c/Computer Science yr/2 avail/1,2,3` |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                            |
-| **Edit**   | `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [c/COURSE] [yr/YEAR] [avail/AVAILABILITY] [as/APPLICATION_STATUS]…​`<br> e.g.,`edit 2 n/James Lee p/98765432 yr/4`                             |
-| **Find**   | `find k/KEYWORD [k/MORE_KEYWORDS]... [f/ATTRIBUTE_FIELD]`<br> e.g., `find k/Jane k/Doe f/name`                                                                                                 |
-| **Sort**   | `sort s/ATTRIBUTE_FIELD`<br> e.g., `sort s/name`                                                                                                                                               |
-| **Remark** | `remark INDEX [r/REMARK]`<br> e.g., `remark 1 r/a good candidate`                                                                                                                              |
-| **Focus**  | [[PLACEHOLDER]]                                                                                                                                                                                |
+### Managing candidates
+| Action     | Format, Examples                                                                                                                                                                                |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add id/STUDENT_ID n/NAME p/PHONE e/EMAIL c/COURSE yr/SENIORITY avail/AVAILABILITY`<br> e.g., `add id/A0123456B n/John Doe p/87654321 e/E0123456@u.nus.edu c/Computer Science yr/2 avail/1,2,3` |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                             |
+| **Edit**   | `edit INDEX [PREFIX/VALUE] [MORE_PREFIX/VALUE]…​`<br> e.g.,`edit 2 n/James Lee p/98765432 yr/4`                                                                                                 |
+| **Find**   | `find k/KEYWORD [k/MORE_KEYWORDS]…​ [f/ATTRIBUTE_FIELD]`<br> e.g., `find k/Jane k/Doe f/name`                                                                                                   |
+| **Sort**   | `sort s/ATTRIBUTE_FIELD`<br> e.g., `sort s/name`                                                                                                                                                |
+| **Remark** | `remark INDEX [r/REMARK]`<br> e.g., `remark 1 r/a good candidate`                                                                                                                               |
+| **Focus**  | `focus INDEX`<br> e.g., `focus 1`                                                                                                                                                               |
 
-### Scheduling Interviews
+### Scheduling interviews
 | Action                        | Format, Examples                                                                                       |
 |-------------------------------|--------------------------------------------------------------------------------------------------------|
 | **Schedule interview**        | `schedule add candidate/INDEX /at DATE_TIME` <br> e.g., `schedule add candidate/2 at/05-05-2022 10:00` |
 | **Reschedule interview**      | `schedule edit SCHEDULE_INDEX at/DATE_TIME` <br> e.g., `schedule edit 1 at/06-06-2022 15:00`           |
 | **Delete interview**          | `schedule delete SCHEDULE_INDEX` <br> e.g., `schedule delete 1`                                        |
-| **Clear all interviews**      | [[PLACEHOLDER]]                                                                                        |
+| **Clear all interviews**      | `schedule clear`                                                                                       |
 | **View scheduled interviews** | `view TIME_PERIOD` <br> e.g., `view all`, `view today`                                                 |
 
-### Miscellaneous commands / Help
+### Miscellaneous commands
 | Action    | Format, Examples |
 |-----------|------------------|
 | **Clear** | `clear`          |
