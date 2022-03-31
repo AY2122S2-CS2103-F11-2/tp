@@ -11,7 +11,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SENIORITY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CANDIDATES;
 
-import java.io.FileReader;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +39,7 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String REFRESH_MESSAGE = "Note: If user is being shown on the middle panel, refresh "
+    public static final String REFRESH_MESSAGE = "Note: To view updated Candidate's profile, refresh "
             + "the candidate's information by using the Focus Command.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the candidate identified "
@@ -115,7 +114,6 @@ public class EditCommand extends Command {
         }
 
         model.updateFilteredCandidateList(PREDICATE_SHOW_ALL_CANDIDATES);
-
         return new CommandResult(String.format(MESSAGE_EDIT_CANDIDATE_SUCCESS,
                 editedCandidate + "\n" + REFRESH_MESSAGE));
     }
