@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SENIORITY;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CANDIDATES;
 
 import java.util.List;
 import java.util.Optional;
@@ -108,6 +109,7 @@ public class EditCommand extends Command {
             }
         }
 
+        model.updateFilteredCandidateList(PREDICATE_SHOW_ALL_CANDIDATES);
         return new CommandResult(String.format(MESSAGE_EDIT_CANDIDATE_SUCCESS, editedCandidate));
     }
 
