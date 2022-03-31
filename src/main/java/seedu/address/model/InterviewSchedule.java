@@ -76,6 +76,12 @@ public class InterviewSchedule implements ReadOnlyInterviewSchedule {
         return interviews.containsConflictingInterview(interview);
     }
 
+
+    public Interview getConflictingInterview(Interview interview) {
+        requireNonNull(interview);
+        return interviews.getConflictingInterview(interview);
+    }
+
     /**
      * Adds an interview to the interview schedule.
      * The interview must not already exist in the interview schedule.
@@ -147,5 +153,11 @@ public class InterviewSchedule implements ReadOnlyInterviewSchedule {
 
     public List<Candidate> getExpiredInterviewCandidates() {
         return interviews.getExpiredInterviewCandidates();
+    }
+
+    public void setInterviewSameCandidate(Interview interviewToEdit, Interview editedInterview) {
+        requireNonNull(editedInterview);
+
+        interviews.setInterviewForSameCandidate(interviewToEdit, editedInterview);
     }
 }

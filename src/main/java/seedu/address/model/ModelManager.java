@@ -161,6 +161,11 @@ public class ModelManager implements Model {
 
     }
 
+    @Override
+    public void setInterviewSameCandidate(Interview interviewToEdit, Interview editedInterview) {
+        interviewSchedule.setInterviewSameCandidate(interviewToEdit, editedInterview);
+    }
+
     //=========== InterviewSchedule ================================================================================
 
     @Override
@@ -184,6 +189,12 @@ public class ModelManager implements Model {
     public boolean hasConflictingInterview(Interview interview) {
         requireNonNull(interview);
         return interviewSchedule.hasConflictingInterview(interview);
+    }
+
+    @Override
+    public Interview getConflictingInterview(Interview interview) {
+        requireNonNull(interview);
+        return interviewSchedule.getConflictingInterview(interview);
     }
 
     @Override

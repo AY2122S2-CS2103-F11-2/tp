@@ -15,6 +15,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.interview.Interview;
+import seedu.address.model.interview.exceptions.InterviewNotFoundException;
 
 /**
  * Schedules a candidate identified using it's displayed index from the address book for an interview
@@ -54,6 +55,7 @@ public class EditScheduleCommand extends ScheduleCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Interview> lastShownList = model.getFilteredInterviewSchedule();
+        boolean sameCandidate = false;
         if (lastShownList.isEmpty()) {
             throw new CommandException(String.format(Messages.MESSAGE_NO_INTERVIEWS_DISPLAYED));
         }
@@ -75,9 +77,21 @@ public class EditScheduleCommand extends ScheduleCommand {
             throw new CommandException(MESSAGE_CANDIDATE_NOT_AVAILABLE);
         }
         if (model.hasConflictingInterview(editedInterview)) {
-            throw new CommandException(MESSAGE_CONFLICTING_INTERVIEW);
+            try {
+                Interview conflictingInterview = model.getConflictingInterview(editedInterview);
+                if (!conflictingInterview.getCandidate().equals(editedInterview.getCandidate())) {
+                    throw new CommandException(MESSAGE_CONFLICTING_INTERVIEW);
+                }
+                sameCandidate = true;
+            } catch (InterviewNotFoundException e) {
+                throw new CommandException(MESSAGE_CONFLICTING_INTERVIEW);
+            }
         }
-        model.setInterview(interviewToEdit, editedInterview);
+        if (sameCandidate) {
+            model.setInterviewSameCandidate(interviewToEdit, editedInterview);
+        } else {
+            model.setInterview(interviewToEdit, editedInterview);
+        }
         model.updateFilteredInterviewSchedule(PREDICATE_SHOW_ALL_INTERVIEWS);
 
         int indexCandidate = model.getFilteredCandidateList().indexOf(editedInterview.getCandidate());

@@ -119,6 +119,8 @@ public interface Model {
 
     boolean hasConflictingInterview(Interview interview);
 
+    Interview getConflictingInterview(Interview interview);
+
     void deleteInterviewForCandidate(Candidate target);
 
     void deleteInterview(Interview interviewToDelete);
@@ -160,4 +162,6 @@ public interface Model {
     void resetAllScheduledStatus() throws CommandException;
 
     List<Candidate> getExpiredInterviewCandidates();
+
+    void setInterviewSameCandidate(Interview interviewToEdit, Interview editedInterview);
 }

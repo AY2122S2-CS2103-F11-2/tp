@@ -35,6 +35,26 @@ public class UniqueInterviewList implements Iterable<Interview> {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isConflictingInterview);
     }
+
+    /**
+     * Returns true if the list contains an equivalent candidate as the given argument.
+     */
+    public Interview getConflictingInterview(Interview interview) throws InterviewNotFoundException {
+        requireNonNull(interview);
+        Interview conflictingInterview = null;
+        try {
+            for (Interview i : internalList) {
+                if (i.isConflictingInterview(interview)) {
+                    conflictingInterview = i;
+                    break;
+                }
+            }
+        } catch (NullPointerException e) {
+            throw new InterviewNotFoundException();
+        }
+        return conflictingInterview;
+    }
+
     /**
      * Adds an interview to the list.
      * The candidate must not already exist in the list.
@@ -50,7 +70,7 @@ public class UniqueInterviewList implements Iterable<Interview> {
         internalList.add(toAdd);
     }
     /**
-     * Replaces the candidate {@code target} in the list with {@code editedCandidate}.
+     * Replaces the interview {@code target} in the list with {@code editedInterview}.
      * {@code target} must exist in the list.
      * The candidate identity of {@code editedCandidate} must not be the same as another existing candidate in the list.
      */
@@ -66,6 +86,21 @@ public class UniqueInterviewList implements Iterable<Interview> {
             throw new ConflictingInterviewException();
         }
 
+        internalList.set(index, editedInterview);
+    }
+
+    /**
+     * Replaces the candidate {@code target} in the list with {@code editedCandidate}.
+     * {@code target} must exist in the list.
+     * The candidate identity of {@code editedCandidate} must not be the same as another existing candidate in the list.
+     */
+    public void setInterviewForSameCandidate(Interview target, Interview editedInterview) {
+        requireAllNonNull(target, editedInterview);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new InterviewNotFoundException();
+        }
         internalList.set(index, editedInterview);
     }
 
